@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listing诊断器 — 免费分析你的跨境电商产品标题和描述</title>
+<meta name="description" content="免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量。检测标题长度、关键词密度、卖点结构，获取优化建议。">
+<meta name="keywords" content="listing优化,亚马逊listing分析,跨境电商工具,产品标题优化,listing诊断,SEO分析,Amazon listing">
+<link rel="canonical" href="https://yifanyifan897645.github.io/listing-analyzer/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:1.8rem;text-align:center;margin:30px 0 8px;color:#0f172a}
+.subtitle{text-align:center;color:#64748b;margin-bottom:30px;font-size:0.95rem}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.card h2{font-size:1.1rem;margin-bottom:16px;color:#334155}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:0.9rem;color:#475569}
+textarea,select,input[type="text"]{width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;font-family:inherit;transition:border-color 0.2s}
+textarea:focus,select:focus,input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+textarea{resize:vertical;min-height:80px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field{margin-bottom:16px}
+.btn{display:block;width:100%;padding:14px;background:#3b82f6;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s}
+.btn:hover{background:#2563eb}
+.btn:disabled{background:#94a3b8;cursor:not-allowed}
+
+/* Results */
+.results{display:none}
+.score-ring{width:120px;height:120px;margin:0 auto 16px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;font-weight:700}
+.score-label{text-align:center;font-size:0.9rem;color:#64748b;margin-bottom:24px}
+
+.metric{padding:14px 0;border-bottom:1px solid #f1f5f9}
+.metric:last-child{border-bottom:none}
+.metric-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.metric-name{font-weight:600;font-size:0.95rem}
+.metric-score{font-weight:700;font-size:0.95rem;padding:2px 10px;border-radius:20px}
+.score-good{background:#dcfce7;color:#166534}
+.score-warn{background:#fef9c3;color:#854d0e}
+.score-bad{background:#fee2e2;color:#991b1b}
+.metric-detail{font-size:0.85rem;color:#64748b}
+.metric-tip{font-size:0.85rem;color:#ea580c;margin-top:4px;padding-left:16px;border-left:2px solid #fb923c}
+
+.cta-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.cta-box h3{color:#1e40af;margin-bottom:8px;font-size:1.1rem}
+.cta-box p{color:#3b82f6;margin-bottom:16px;font-size:0.9rem}
+.cta-btn{display:inline-block;padding:12px 32px;background:#2563eb;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;transition:background 0.2s}
+.cta-btn:hover{background:#1d4ed8}
+
+.footer{text-align:center;padding:30px 0;color:#94a3b8;font-size:0.8rem}
+.footer a{color:#64748b}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;margin-left:8px}
+
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  h1{font-size:1.4rem}
+  .container{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Listing 诊断器</h1>
+  <p class="subtitle">免费分析跨境电商产品Listing质量 &middot; 支持亚马逊/速卖通/Shopify</p>
+
+  <!-- Input Form -->
+  <div class="card" id="inputCard">
+    <h2>粘贴你的产品信息</h2>
+
+    <div class="row">
+      <div class="field">
+        <label for="platform">目标平台</label>
+        <select id="platform">
+          <option value="amazon">Amazon 亚马逊</option>
+          <option value="aliexpress">AliExpress 速卖通</option>
+          <option value="shopify">Shopify 独立站</option>
+          <option value="other">其他平台</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="category">产品类目</label>
+        <input type="text" id="category" placeholder="如：手机壳、LED灯带、瑜伽垫">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="title">产品标题</label>
+      <textarea id="title" rows="2" placeholder="粘贴你的产品标题...&#10;例：Bluetooth Wireless Earbuds, Noise Cancelling Headphones with Microphone, IPX7 Waterproof"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="bullets">卖点/Bullet Points <span style="color:#94a3b8;font-weight:400">（每行一个）</span></label>
+      <textarea id="bullets" rows="6" placeholder="粘贴你的卖点描述，每个卖点一行...&#10;例：&#10;【Superior Sound Quality】Premium 13mm drivers deliver crystal-clear audio&#10;【40H Battery Life】Full charge lasts up to 40 hours with the charging case&#10;【IPX7 Waterproof】Perfect for gym, running, and outdoor activities"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="keywords">目标关键词 <span style="color:#94a3b8;font-weight:400">（逗号分隔，选填）</span></label>
+      <input type="text" id="keywords" placeholder="如：bluetooth earbuds, wireless headphones, noise cancelling">
+    </div>
+
+    <button class="btn" id="analyzeBtn" onclick="analyze()">开始分析</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results">
+    <div class="card">
+      <div class="score-ring">
+        <svg width="120" height="120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+          <circle id="scoreArc" cx="60" cy="60" r="52" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="327" stroke-dashoffset="327" stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
+        </svg>
+        <div class="score-text" id="totalScore">0</div>
+      </div>
+      <div class="score-label" id="scoreDesc">分析中...</div>
+    </div>
+
+    <div class="card">
+      <h2>详细诊断</h2>
+      <div id="metricsContainer"></div>
+    </div>
+
+    <div class="cta-box">
+      <h3>需要专业优化？</h3>
+      <p>我们的团队为你的Listing做场景化重写 — 标题+五点描述+关键词+多语言翻译</p>
+      <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank" rel="noopener">¥49 获取专业优化 →</a>
+      <p style="margin-top:12px;font-size:0.8rem;color:#64748b">已优化 200+ 产品 &middot; 平均提升 35% 点击率 &middot; Word文档交付</p>
+    </div>
+
+    <button class="btn" style="margin-top:16px;background:#64748b" onclick="reset()">重新分析</button>
+  </div>
+
+  <div class="footer">
+    <p>Listing诊断器 &middot; 免费工具 &middot; 数据不上传，全部本地分析</p>
+    <p style="margin-top:4px"><a href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank">跨境Listing优化 ¥49</a> · <a href="https://mbd.pub/o/bread/YZWclp5xag==" target="_blank">电商文案优化 ¥29</a></p>
+  </div>
+</div>
+
+<script>
+function analyze() {
+  const title = document.getElementById('title').value.trim();
+  const bullets = document.getElementById('bullets').value.trim();
+  const keywords = document.getElementById('keywords').value.trim();
+  const platform = document.getElementById('platform').value;
+  const category = document.getElementById('category').value.trim();
+
+  if (!title) { alert('请输入产品标题'); return; }
+
+  const metrics = [];
+  let totalScore = 0;
+  let maxScore = 0;
+
+  // 1. Title Length Analysis
+  const titleLen = title.length;
+  const platformLimits = { amazon: { min: 80, ideal: 150, max: 200 }, aliexpress: { min: 60, ideal: 128, max: 128 }, shopify: { min: 50, ideal: 70, max: 100 }, other: { min: 60, ideal: 120, max: 200 } };
+  const limits = platformLimits[platform];
+  let titleScore = 0;
+  let titleTip = '';
+  if (titleLen < limits.min) {
+    titleScore = Math.round((titleLen / limits.min) * 60);
+    titleTip = `标题太短（${titleLen}字符），建议至少${limits.min}字符。补充核心卖点和使用场景关键词。`;
+  } else if (titleLen <= limits.ideal) {
+    titleScore = 90 + Math.round(((titleLen - limits.min) / (limits.ideal - limits.min)) * 10);
+    titleTip = '';
+  } else if (titleLen <= limits.max) {
+    titleScore = 80;
+    titleTip = `标题略长（${titleLen}字符），建议控制在${limits.ideal}字符内，删除冗余修饰词。`;
+  } else {
+    titleScore = 50;
+    titleTip = `标题超长（${titleLen}字符），超过平台限制${limits.max}字符，可能被截断！`;
+  }
+  metrics.push({ name: '标题长度', score: titleScore, detail: `${titleLen} 字符（${platform === 'amazon' ? 'Amazon' : platform === 'aliexpress' ? '速卖通' : platform === 'shopify' ? 'Shopify' : '通用'}建议 ${limits.min}-${limits.ideal}）`, tip: titleTip });
+  totalScore += titleScore; maxScore += 100;
+
+  // 2. Title Keyword Stuffing Check
+  const titleWords = title.split(/[\s,\-|/]+/).filter(w => w.length > 1);
+  const uniqueWords = new Set(titleWords.map(w => w.toLowerCase()));
+  const dupeRatio = 1 - (uniqueWords.size / titleWords.length);
+  let stuffScore = dupeRatio < 0.1 ? 95 : dupeRatio < 0.2 ? 75 : dupeRatio < 0.3 ? 55 : 30;
+  const stuffTip = dupeRatio >= 0.2 ? `发现${Math.round(dupeRatio * 100)}%重复词，避免关键词堆砌，会降低平台权重。` : '';
+  metrics.push({ name: '关键词堆砌', score: stuffScore, detail: `${titleWords.length}个词中${uniqueWords.size}个不重复（重复率${Math.round(dupeRatio * 100)}%）`, tip: stuffTip });
+  totalScore += stuffScore; maxScore += 100;
+
+  // 3. Title Structure
+  const hasDelimiter = /[|,\-–—]/.test(title);
+  const hasBrand = /^[A-Z][a-zA-Z0-9]+\s/.test(title);
+  let structScore = 70;
+  let structTip = '';
+  if (hasDelimiter && hasBrand) { structScore = 95; }
+  else if (hasDelimiter) { structScore = 85; structTip = '建议把品牌名放在标题开头。'; }
+  else { structScore = 60; structTip = '标题缺少分隔符（如逗号、竖线），建议用结构化格式：品牌+核心品+核心卖点+使用场景。'; }
+  metrics.push({ name: '标题结构', score: structScore, detail: `品牌前置: ${hasBrand ? '是' : '否'} · 分隔符: ${hasDelimiter ? '有' : '无'}`, tip: structTip });
+  totalScore += structScore; maxScore += 100;
+
+  // 4. Bullet Points Analysis
+  if (bullets) {
+    const bulletList = bullets.split('\n').map(b => b.trim()).filter(b => b.length > 0);
+    const bulletCount = bulletList.length;
+    let bulletScore = 0;
+    let bulletTip = '';
+
+    if (bulletCount === 0) {
+      bulletScore = 0; bulletTip = '没有卖点描述！产品listing必须有bullet points。';
+    } else if (bulletCount < 3) {
+      bulletScore = 40; bulletTip = `只有${bulletCount}条卖点，建议至少5条。覆盖功能、材质、场景、售后、规格。`;
+    } else if (bulletCount >= 5) {
+      bulletScore = 90;
+    } else {
+      bulletScore = 70; bulletTip = `${bulletCount}条卖点还行，但建议补充到5条以上。`;
+    }
+
+    // Check bullet quality
+    const avgLen = bulletList.reduce((s, b) => s + b.length, 0) / bulletCount;
+    if (avgLen < 50) {
+      bulletScore = Math.max(bulletScore - 20, 20);
+      bulletTip += ' 卖点太短，建议每条100-200字符，包含具体数据和使用场景。';
+    }
+
+    // Check if bullets have structure (emoji/bracket headers)
+    const hasHeaders = bulletList.filter(b => /^[【\[🔊💪🎵🎧🏃✅⭐🔋]/.test(b)).length;
+    if (hasHeaders >= bulletCount * 0.5) {
+      bulletScore = Math.min(bulletScore + 5, 100);
+    } else if (bulletCount >= 3) {
+      bulletTip += ' 建议每条卖点加粗体标题（如【xx】或大写前缀），提高可读性。';
+    }
+
+    metrics.push({ name: '卖点描述', score: bulletScore, detail: `${bulletCount}条卖点 · 平均${Math.round(avgLen)}字符/条`, tip: bulletTip.trim() });
+    totalScore += bulletScore; maxScore += 100;
+  }
+
+  // 5. Keyword Coverage
+  if (keywords) {
+    const kwList = keywords.split(/[,，;；]/).map(k => k.trim().toLowerCase()).filter(k => k);
+    const titleLower = title.toLowerCase();
+    const allText = (title + ' ' + bullets).toLowerCase();
+    let titleHits = kwList.filter(k => titleLower.includes(k)).length;
+    let allHits = kwList.filter(k => allText.includes(k)).length;
+    let kwScore = Math.round((allHits / kwList.length) * 100);
+    let kwTip = '';
+    if (titleHits < kwList.length) {
+      const missing = kwList.filter(k => !titleLower.includes(k));
+      kwTip = `标题中缺少关键词：${missing.slice(0, 3).join('、')}${missing.length > 3 ? '等' : ''}。核心关键词必须出现在标题中。`;
+    }
+    if (allHits < kwList.length) {
+      const bodyMissing = kwList.filter(k => !allText.includes(k));
+      kwTip += ` 全文缺少：${bodyMissing.join('、')}。`;
+    }
+    metrics.push({ name: '关键词覆盖', score: kwScore, detail: `${kwList.length}个目标词中 标题命中${titleHits}个 · 全文命中${allHits}个`, tip: kwTip.trim() });
+    totalScore += kwScore; maxScore += 100;
+  }
+
+  // 6. Language & Readability
+  const isChinese = /[\u4e00-\u9fff]/.test(title);
+  const isEnglish = /^[a-zA-Z0-9\s,.\-|/'&()]+$/.test(title.replace(/[\u4e00-\u9fff]/g, ''));
+  const hasMixedLang = isChinese && /[a-zA-Z]{3,}/.test(title);
+  let langScore = 85;
+  let langTip = '';
+  if (hasMixedLang && platform !== 'other') {
+    langScore = 60;
+    langTip = '标题中英混用可能降低搜索权重。建议标题使用纯目标市场语言，在后台关键词中补充另一语言。';
+  }
+  // Check for ALL CAPS
+  const capsWords = title.split(/\s+/).filter(w => w.length > 3 && w === w.toUpperCase());
+  if (capsWords.length > 2) {
+    langScore -= 15;
+    langTip += ' 过多全大写单词会显得不专业，建议只大写品牌名和首字母。';
+  }
+  metrics.push({ name: '语言规范', score: langScore, detail: `${isChinese ? '中文' : '英文'}标题 · ${capsWords.length}个全大写词`, tip: langTip.trim() });
+  totalScore += langScore; maxScore += 100;
+
+  // Calculate final score
+  const finalScore = Math.round(totalScore / maxScore * 100);
+
+  // Render results
+  renderResults(finalScore, metrics);
+}
+
+function renderResults(score, metrics) {
+  document.getElementById('inputCard').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  // Animate score ring
+  const arc = document.getElementById('scoreArc');
+  const circumference = 2 * Math.PI * 52;
+  const offset = circumference - (score / 100) * circumference;
+
+  let color = score >= 80 ? '#22c55e' : score >= 60 ? '#eab308' : '#ef4444';
+  arc.style.stroke = color;
+  setTimeout(() => { arc.style.strokeDashoffset = offset; }, 100);
+
+  const scoreEl = document.getElementById('totalScore');
+  scoreEl.style.color = color;
+  // Animate counter
+  let current = 0;
+  const step = Math.ceil(score / 30);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, score);
+    scoreEl.textContent = current;
+    if (current >= score) clearInterval(timer);
+  }, 30);
+
+  const desc = score >= 85 ? '优秀！你的Listing质量很好' : score >= 70 ? '良好，有一些可优化的地方' : score >= 50 ? '需要优化，有明显短板' : '亟需优化，多项指标不达标';
+  document.getElementById('scoreDesc').textContent = desc;
+
+  // Render metrics
+  const container = document.getElementById('metricsContainer');
+  container.innerHTML = metrics.map(m => {
+    const cls = m.score >= 80 ? 'score-good' : m.score >= 60 ? 'score-warn' : 'score-bad';
+    return `<div class="metric">
+      <div class="metric-header">
+        <span class="metric-name">${m.name}</span>
+        <span class="metric-score ${cls}">${m.score}分</span>
+      </div>
+      <div class="metric-detail">${m.detail}</div>
+      ${m.tip ? `<div class="metric-tip">${m.tip}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function reset() {
+  document.getElementById('inputCard').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  // Reset score ring
+  document.getElementById('scoreArc').style.strokeDashoffset = '327';
+  document.getElementById('totalScore').textContent = '0';
+}
+</script>
+</body>
+</html>
