@@ -130,6 +130,7 @@ textarea{resize:vertical;min-height:80px}
     </div>
 
     <button class="btn" id="analyzeBtn" onclick="analyze()">开始分析</button>
+    <button class="btn" style="margin-top:8px;background:#64748b;font-size:0.9rem" onclick="loadDemo()">不知道怎么用？点这里看示例</button>
   </div>
 
   <!-- Results -->
@@ -181,7 +182,10 @@ textarea{resize:vertical;min-height:80px}
       <p style="margin-top:6px;font-size:0.8rem;color:#64748b">48小时内交付 &middot; Word文档</p>
     </div>
 
-    <button class="btn" style="margin-top:16px;background:#64748b" onclick="reset()">重新分析</button>
+    <div style="display:flex;gap:12px;margin-top:16px">
+      <button class="btn" style="background:#64748b;flex:1" onclick="reset()">重新分析</button>
+      <button class="btn" style="background:#0ea5e9;flex:1" onclick="copyReport()">复制诊断报告</button>
+    </div>
   </div>
 
   <div class="footer">
@@ -426,6 +430,38 @@ function generatePreview(originalTitle, platform) {
 
   previewEl.textContent = optimized + suffix;
   box.style.display = 'block';
+}
+
+function loadDemo() {
+  document.getElementById('platform').value = 'amazon';
+  document.getElementById('category').value = '蓝牙音箱';
+  document.getElementById('title').value = 'Bluetooth Speaker Wireless Speaker Portable Speaker Mini Speaker Outdoor Speaker Waterproof Speaker Music Speaker';
+  document.getElementById('bullets').value = 'Bluetooth 5.0 connection\nBattery capacity 3000mAh\nIPX7 waterproof rating\n40mm speaker driver\nWeight 350g size 15x7x7cm';
+  document.getElementById('keywords').value = 'bluetooth speaker, waterproof speaker, portable speaker, outdoor speaker';
+  analyze();
+}
+
+function copyReport() {
+  const score = document.getElementById('totalScore').textContent;
+  const desc = document.getElementById('scoreDesc').textContent;
+  const metrics = document.querySelectorAll('.metric');
+  let report = `Listing诊断报告\n${'='.repeat(30)}\n综合评分: ${score}/100 (${desc})\n\n`;
+  metrics.forEach(m => {
+    const name = m.querySelector('.metric-name').textContent;
+    const s = m.querySelector('.metric-score').textContent;
+    const detail = m.querySelector('.metric-detail').textContent;
+    const tip = m.querySelector('.metric-tip');
+    report += `${name}: ${s}\n  ${detail}\n`;
+    if (tip) report += `  建议: ${tip.textContent}\n`;
+    report += '\n';
+  });
+  report += `---\n免费诊断: https://yifanyifan897645.github.io/listing-analyzer/\n专业优化: https://mbd.pub/o/bread/YZWcl5hsag== (¥1起)\n`;
+  navigator.clipboard.writeText(report).then(() => {
+    const btn = event.target;
+    btn.textContent = '已复制!';
+    btn.style.background = '#22c55e';
+    setTimeout(() => { btn.textContent = '复制诊断报告'; btn.style.background = '#0ea5e9'; }, 2000);
+  });
 }
 
 function reset() {
