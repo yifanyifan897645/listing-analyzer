@@ -122,11 +122,15 @@ textarea{resize:vertical;min-height:80px}
       <div id="metricsContainer"></div>
     </div>
 
-    <div class="cta-box">
-      <h3>需要专业优化？</h3>
-      <p>我们的团队为你的Listing做场景化重写 — 标题+五点描述+关键词+多语言翻译</p>
-      <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank" rel="noopener">¥49 获取专业优化 →</a>
-      <p style="margin-top:12px;font-size:0.8rem;color:#64748b">已优化 200+ 产品 &middot; 平均提升 35% 点击率 &middot; Word文档交付</p>
+    <div class="cta-box" id="ctaBox">
+      <h3 id="ctaTitle">需要专业优化？</h3>
+      <p>让专业团队帮你重写 — 标题+五点描述+关键词+多语言翻译</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==" target="_blank" rel="noopener" style="background:#22c55e">¥1 先体验一下 →</a>
+        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank" rel="noopener">¥49 完整优化 →</a>
+      </div>
+      <p style="font-size:0.8rem;color:#64748b">¥1体验包：1个产品标题+五点描述 &middot; ¥49完整包：标题+描述+关键词+翻译+摘要</p>
+      <p style="margin-top:6px;font-size:0.8rem;color:#64748b">24小时内交付 &middot; Word文档</p>
     </div>
 
     <button class="btn" style="margin-top:16px;background:#64748b" onclick="reset()">重新分析</button>
@@ -273,11 +277,14 @@ function analyze() {
   // Calculate final score
   const finalScore = Math.round(totalScore / maxScore * 100);
 
+  // Count problems
+  const problemCount = metrics.filter(m => m.score < 80).length;
+
   // Render results
-  renderResults(finalScore, metrics);
+  renderResults(finalScore, metrics, problemCount);
 }
 
-function renderResults(score, metrics) {
+function renderResults(score, metrics, problemCount) {
   document.getElementById('inputCard').style.display = 'none';
   document.getElementById('results').style.display = 'block';
 
@@ -317,6 +324,13 @@ function renderResults(score, metrics) {
       ${m.tip ? `<div class="metric-tip">${m.tip}</div>` : ''}
     </div>`;
   }).join('');
+
+  // Update CTA with problem count
+  if (problemCount > 0) {
+    document.getElementById('ctaTitle').innerHTML = '检测到 <span style="color:#ef4444;font-size:1.3em">' + problemCount + '</span> 个可优化项';
+  } else {
+    document.getElementById('ctaTitle').textContent = '你的Listing质量不错！想更上一层楼？';
+  }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
