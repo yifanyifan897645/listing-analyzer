@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yifanyifan897645.github.io/listing-analyzer/sitemap.xml
