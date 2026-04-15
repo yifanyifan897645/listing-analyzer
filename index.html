@@ -165,7 +165,7 @@ textarea{resize:vertical;min-height:80px}
         </div>
         <div class="preview-locked-overlay">
           <span>完整优化方案需付费解锁</span>
-          <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==" target="_blank" rel="noopener" style="background:#22c55e;padding:8px 24px;font-size:0.9rem">¥1 试试看 →</a>
+          <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=preview-overlay&utm_content=1yuan" target="_blank" rel="noopener" style="background:#22c55e;padding:8px 24px;font-size:0.9rem">¥1 试试看 →</a>
         </div>
       </div>
     </div>
@@ -174,9 +174,9 @@ textarea{resize:vertical;min-height:80px}
       <h3 id="ctaTitle">需要专业优化？</h3>
       <p>让专业团队帮你重写 — 标题+五点描述+关键词+多语言翻译</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==" target="_blank" rel="noopener" style="background:#22c55e">¥1 先体验 →</a>
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hwZA==" target="_blank" rel="noopener" style="background:#f59e0b">¥39 1688转化 →</a>
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank" rel="noopener">¥49 完整优化 →</a>
+        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=1yuan" target="_blank" rel="noopener" style="background:#22c55e">¥1 先体验 →</a>
+        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hwZA==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=39yuan" target="_blank" rel="noopener" style="background:#f59e0b">¥39 1688转化 →</a>
+        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=49yuan" target="_blank" rel="noopener">¥49 完整优化 →</a>
       </div>
       <p style="font-size:0.8rem;color:#64748b">¥1体验包：1个产品标题+五点描述 &middot; ¥39 1688转化：中文产品→英文Listing &middot; ¥49完整包：标题+描述+关键词+翻译</p>
       <p style="margin-top:6px;font-size:0.8rem;color:#64748b">48小时内交付 &middot; Word文档</p>
@@ -190,7 +190,7 @@ textarea{resize:vertical;min-height:80px}
 
   <div class="footer">
     <p>Listing诊断器 &middot; 免费工具 &middot; 数据不上传，全部本地分析</p>
-    <p style="margin-top:4px"><a href="https://mbd.pub/o/bread/YZWcl5hwZA==" target="_blank">1688→Listing转化 ¥39</a> · <a href="https://mbd.pub/o/bread/YZWclp5xZw==" target="_blank">跨境Listing优化 ¥49</a> · <a href="https://mbd.pub/o/bread/YZWclp5xag==" target="_blank">电商文案优化 ¥29</a></p>
+    <p style="margin-top:4px"><a href="https://mbd.pub/o/bread/YZWcl5hwZA==?utm_source=listing-analyzer&utm_medium=footer&utm_content=39yuan" target="_blank">1688→Listing转化 ¥39</a> · <a href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=footer&utm_content=49yuan" target="_blank">跨境Listing优化 ¥49</a> · <a href="https://mbd.pub/o/bread/YZWclp5xag==?utm_source=listing-analyzer&utm_medium=footer&utm_content=29yuan" target="_blank">电商文案优化 ¥29</a></p>
   </div>
 </div>
 
@@ -203,6 +203,7 @@ function analyze() {
   const category = document.getElementById('category').value.trim();
 
   if (!title) { alert('请输入产品标题'); return; }
+  trackEvent('analyze_start', platform);
 
   const metrics = [];
   let totalScore = 0;
@@ -387,6 +388,7 @@ function renderResults(score, metrics, problemCount) {
   // Generate preview optimized title
   generatePreview(document.getElementById('title').value.trim(), document.getElementById('platform').value);
 
+  trackEvent('analyze_complete', 'score_' + score + '_problems_' + problemCount);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -432,6 +434,22 @@ function generatePreview(originalTitle, platform) {
   box.style.display = 'block';
 }
 
+// Simple event tracking — stores in localStorage for debugging
+function trackEvent(action, label) {
+  try {
+    const events = JSON.parse(localStorage.getItem('la_events') || '[]');
+    events.push({ action, label, ts: new Date().toISOString() });
+    if (events.length > 200) events.splice(0, events.length - 200);
+    localStorage.setItem('la_events', JSON.stringify(events));
+  } catch(e) {}
+}
+
+// Track CTA clicks
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a[href*="mbd.pub"]');
+  if (link) trackEvent('cta_click', link.href.split('utm_content=')[1] || 'unknown');
+});
+
 function loadDemo() {
   document.getElementById('platform').value = 'amazon';
   document.getElementById('category').value = '蓝牙音箱';
@@ -462,6 +480,7 @@ function copyReport() {
     btn.style.background = '#22c55e';
     setTimeout(() => { btn.textContent = '复制诊断报告'; btn.style.background = '#0ea5e9'; }, 2000);
   });
+  trackEvent('copy_report', score);
 }
 
 function reset() {
