@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚马逊Listing检测工具 — 免费分析Amazon产品标题和描述质量</title>
+<meta name="description" content="免费亚马逊Listing检测工具。一键分析标题长度、关键词堆砌、Bullet Points质量、后台搜索词字节数。符合Amazon Seller Central规范，15项深度检测。">
+<meta name="keywords" content="亚马逊listing检测,Amazon listing分析,亚马逊标题优化,Amazon产品标题,listing诊断,亚马逊SEO,Amazon后台关键词">
+<link rel="canonical" href="https://yifanyifan897645.github.io/listing-analyzer/amazon-listing-check.html">
+<meta property="og:title" content="亚马逊Listing检测工具 — 免费15项深度分析">
+<meta property="og:description" content="免费分析你的Amazon产品Listing质量。标题优化、关键词堆砌检测、Bullet Points分析、后台搜索词字节数计算。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yifanyifan897645.github.io/listing-analyzer/amazon-listing-check.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"亚马逊标题最长可以多少个字符？","acceptedAnswer":{"@type":"Answer","text":"亚马逊产品标题的建议长度为80-200字符。大部分品类上限200字符，但最佳实践是控制在150字符以内。手机端只显示前80个字符左右，所以核心关键词应放在前80字符。"}},
+{"@type":"Question","name":"Amazon后台搜索词有什么限制？","acceptedAnswer":{"@type":"Answer","text":"Amazon后台Search Terms限制为250字节（不是250字符）。中文和特殊字符占3字节，英文字母占1字节。用空格分隔关键词，不需要逗号。不要重复标题中已有的词，那是浪费字节。"}},
+{"@type":"Question","name":"什么是关键词堆砌？会被降权吗？","acceptedAnswer":{"@type":"Answer","text":"关键词堆砌是指在标题中重复使用相同或相似的关键词。如果重复率超过30%，亚马逊A9算法可能判定为堆砌并降低搜索排名。建议用同义词替代重复词，保持自然可读。"}},
+{"@type":"Question","name":"Bullet Points怎么写转化率高？","acceptedAnswer":{"@type":"Answer","text":"高转化率的Bullet Points应该：1) 至少5条；2) 每条100-200字符；3) 用【】或大写标题前缀提高扫读效率；4) 包含具体数据（如'40小时续航'）；5) 覆盖功能、材质、场景、售后、规格五个维度。"}}
+]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:1.6rem;text-align:center;margin:30px 0 12px;color:#0f172a}
+.subtitle{text-align:center;color:#64748b;margin-bottom:24px}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+h2{font-size:1.2rem;margin-bottom:12px;color:#334155}
+h3{font-size:1rem;margin:16px 0 8px;color:#475569}
+p{margin-bottom:12px;color:#475569;font-size:0.95rem}
+ul{padding-left:20px;margin-bottom:12px}
+li{margin-bottom:6px;color:#475569;font-size:0.93rem}
+.cta{display:block;text-align:center;padding:16px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;font-size:1.05rem;margin:24px 0;transition:background 0.2s}
+.cta:hover{background:#2563eb}
+.table-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:0.9rem}
+th,td{padding:10px 12px;border:1px solid #e2e8f0;text-align:left}
+th{background:#f1f5f9;font-weight:600;color:#334155}
+.footer{text-align:center;padding:30px 0;color:#94a3b8;font-size:0.8rem}
+.footer a{color:#64748b}
+@media(max-width:600px){h1{font-size:1.3rem}.container{padding:12px}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>亚马逊Listing检测工具</h1>
+<p class="subtitle">免费分析Amazon产品标题、Bullet Points、后台搜索词质量 · 15项深度检测</p>
+
+<a class="cta" href="./?utm_source=amazon-page&utm_medium=seo">立即免费检测你的亚马逊Listing →</a>
+
+<div class="card">
+<h2>亚马逊Listing优化的核心指标</h2>
+<p>亚马逊A9搜索算法根据Listing的多个维度决定搜索排名。以下是最影响排名的关键指标：</p>
+
+<h3>1. 标题优化（Title）</h3>
+<p>亚马逊标题是A9算法权重最高的字段。标题优化需要平衡关键词覆盖和用户阅读体验：</p>
+<div class="table-wrap">
+<table>
+<tr><th>指标</th><th>建议值</th><th>说明</th></tr>
+<tr><td>标题长度</td><td>80-150字符</td><td>过短浪费关键词位，过长被截断且降权</td></tr>
+<tr><td>关键词重复率</td><td>&lt;15%</td><td>超过30%被判定堆砌，会降权</td></tr>
+<tr><td>品牌名位置</td><td>标题开头</td><td>品牌名+核心品类+卖点+场景的结构</td></tr>
+<tr><td>特殊字符</td><td>不超过2个</td><td>!@#等字符可能违反标题规则</td></tr>
+<tr><td>手机截断</td><td>前80字符包含核心信息</td><td>手机端只显示约80字符</td></tr>
+</table>
+</div>
+
+<h3>2. Bullet Points（五点描述）</h3>
+<p>Bullet Points是转化率的关键因素。好的卖点描述能让点击率提升40-60%：</p>
+<ul>
+<li><strong>数量</strong>：至少5条，覆盖功能/材质/场景/售后/规格</li>
+<li><strong>长度</strong>：每条100-200字符，既详细又不啰嗦</li>
+<li><strong>格式</strong>：用【】或CAPS标题前缀，提高手机端扫读效率</li>
+<li><strong>数据</strong>：包含具体数字（"40H续航"比"长续航"更有说服力）</li>
+</ul>
+
+<h3>3. 后台搜索词（Search Terms）</h3>
+<p>很多卖家忽略后台搜索词，白白浪费了额外的关键词容量：</p>
+<ul>
+<li>限制250<strong>字节</strong>（不是字符），中文字符占3字节</li>
+<li>用空格分隔，不要用逗号（逗号会浪费字节）</li>
+<li>不要重复标题中已有的词（浪费空间）</li>
+<li>填入同义词、长尾词、拼写变体</li>
+</ul>
+
+<h3>4. Listing完整度</h3>
+<p>完整的Listing比不完整的排名更高：</p>
+<ul>
+<li>7张以上产品图（含白底主图、场景图、细节图、尺寸图）</li>
+<li>产品视频（转化率提升15-30%）</li>
+<li>A+/品牌故事（注册品牌后可用）</li>
+<li>Q&A和Review（社交证明）</li>
+</ul>
+</div>
+
+<a class="cta" href="./?utm_source=amazon-page&utm_medium=seo">免费检测你的亚马逊Listing（15项分析） →</a>
+
+<div class="card">
+<h2>常见问题</h2>
+<h3>这个工具会上传我的数据吗？</h3>
+<p>不会。所有分析都在你的浏览器本地完成，数据不会发送到任何服务器。</p>
+
+<h3>支持哪些平台？</h3>
+<p>支持Amazon亚马逊、AliExpress速卖通、Shopify、1688等平台。每个平台有针对性的检测标准。</p>
+
+<h3>检测结果准确吗？</h3>
+<p>本工具基于Amazon Seller Central官方指南和跨境电商实战经验设计，15项检测覆盖标题优化、卖点描述、后台关键词、关键词覆盖度、Listing完整度五大维度。</p>
+</div>
+
+<div class="footer">
+<p><a href="./">← 返回Listing诊断器首页</a></p>
+<p style="margin-top:8px">免费在线工具 · 数据不上传 · 100%浏览器本地分析</p>
+</div>
+</div>
+</body>
+</html>

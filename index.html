@@ -25,6 +25,14 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Listing诊断器","description":"免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量。15项深度检测。","url":"https://yifanyifan897645.github.io/listing-analyzer/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"inLanguage":["zh-CN","en"]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Listing诊断器检测哪些指标？","acceptedAnswer":{"@type":"Answer","text":"检测15项核心指标，分为5大维度：标题优化（长度/堆砌/结构/特殊字符/大小写），卖点描述（数量/长度/格式/数据量化），后台关键词（字节数/重复率/分隔符），关键词覆盖（标题命中/全文覆盖），Listing完整度。"}},
+{"@type":"Question","name":"这个工具会上传我的数据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。所有分析都在你的浏览器本地完成（纯JavaScript），数据不会发送到任何服务器。你可以在断网状态下使用。"}},
+{"@type":"Question","name":"支持哪些电商平台？","acceptedAnswer":{"@type":"Answer","text":"支持Amazon亚马逊、AliExpress速卖通、Shopify独立站、1688等平台。每个平台有针对性的检测标准，如亚马逊标题上限200字符、速卖通128字符、Shopify100字符。"}},
+{"@type":"Question","name":"手机端截断预览是什么？","acceptedAnswer":{"@type":"Answer","text":"70%以上的电商流量来自手机。手机屏幕只能显示产品标题的前80个字符左右。我们的截断预览模拟iPhone显示效果，红色标出被截断的部分，帮你确保核心信息在手机端可见。"}}
+]}
+</script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -278,12 +286,35 @@ textarea{resize:vertical;min-height:80px}
     </div>
   </div>
 
+  <div class="card" style="margin-top:20px">
+    <h2>相关工具和指南</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;font-size:0.9rem">
+      <a href="./amazon-listing-check.html" style="display:block;padding:14px;background:#f8fafc;border-radius:8px;text-decoration:none;color:#334155;border:1px solid #e2e8f0;transition:border-color 0.2s">
+        <strong style="display:block;margin-bottom:4px;color:#1e40af">亚马逊Listing检测指南</strong>
+        A9算法标题规范、Bullet Points写法、后台词策略
+      </a>
+      <a href="./listing-title-optimizer.html" style="display:block;padding:14px;background:#f8fafc;border-radius:8px;text-decoration:none;color:#334155;border:1px solid #e2e8f0;transition:border-color 0.2s">
+        <strong style="display:block;margin-bottom:4px;color:#1e40af">标题优化5步法</strong>
+        各平台标题长度标准、结构化标题写法、截断预览
+      </a>
+      <a href="./backend-keywords-checker.html" style="display:block;padding:14px;background:#f8fafc;border-radius:8px;text-decoration:none;color:#334155;border:1px solid #e2e8f0;transition:border-color 0.2s">
+        <strong style="display:block;margin-bottom:4px;color:#1e40af">后台关键词优化指南</strong>
+        250字节限制计算、与标题去重、多语言关键词策略
+      </a>
+    </div>
+  </div>
+
   <div class="footer">
     <p>Listing诊断器 · 免费在线工具 · 数据不上传，100%浏览器本地分析</p>
     <p style="margin-top:4px">
       <a href="https://mbd.pub/o/bread/YZWcmJ1xaQ==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">50项诊断包 ¥29</a> ·
       <a href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">Listing优化 ¥49</a> ·
       <a href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">¥1体验</a>
+    </p>
+    <p style="margin-top:4px;font-size:0.75rem">
+      <a href="./amazon-listing-check.html">亚马逊Listing检测</a> ·
+      <a href="./listing-title-optimizer.html">标题优化工具</a> ·
+      <a href="./backend-keywords-checker.html">后台关键词检测</a>
     </p>
   </div>
 </div>

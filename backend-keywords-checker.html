@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚马逊后台关键词检测工具 — 免费检查Search Terms字节数和重复率</title>
+<meta name="description" content="免费亚马逊后台搜索词检测工具。检查Search Terms字节数是否超过250字节限制，检测与标题的重复率，分析分隔符格式是否正确。">
+<meta name="keywords" content="亚马逊后台关键词,Amazon Search Terms,后台搜索词检测,关键词字节数,250字节限制,后台关键词优化,亚马逊SEO">
+<link rel="canonical" href="https://yifanyifan897645.github.io/listing-analyzer/backend-keywords-checker.html">
+<meta property="og:title" content="亚马逊后台关键词检测 — 免费检查字节数和重复率">
+<meta property="og:description" content="检查Amazon Search Terms是否超过250字节限制、是否与标题重复、分隔符格式是否正确。">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"亚马逊后台搜索词的250字节限制怎么算？","acceptedAnswer":{"@type":"Answer","text":"亚马逊Search Terms限制250字节。英文字母和数字占1字节，中文字符占3字节，空格占1字节。250字节约等于250个英文字符或83个中文字符。超过250字节的部分会被亚马逊完全忽略。"}},
+{"@type":"Question","name":"后台搜索词需要用逗号分隔吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。亚马逊后台搜索词应该用空格分隔，不要用逗号。逗号不会被亚马逊识别为分隔符，反而会浪费宝贵的字节数。每个逗号浪费1字节。"}},
+{"@type":"Question","name":"后台搜索词应该和标题重复吗？","acceptedAnswer":{"@type":"Answer","text":"不应该。标题中已有的关键词不需要在后台搜索词中重复。亚马逊会自动索引标题中的关键词。后台搜索词应该填入标题中没有的同义词、长尾词、拼写变体、西班牙语/法语等多语言词汇。"}},
+{"@type":"Question","name":"后台搜索词填什么最有效？","acceptedAnswer":{"@type":"Answer","text":"填入：1) 标题没有的同义词（earphone vs earbud）；2) 长尾搜索词（best earbuds for running）；3) 常见拼写错误（bluetooth vs bluetooh）；4) 西班牙语/法语关键词（auriculares, écouteurs）；5) 使用场景词（gym workout commute）。"}}
+]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:1.6rem;text-align:center;margin:30px 0 12px;color:#0f172a}
+.subtitle{text-align:center;color:#64748b;margin-bottom:24px}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+h2{font-size:1.2rem;margin-bottom:12px;color:#334155}
+h3{font-size:1rem;margin:16px 0 8px;color:#475569}
+p{margin-bottom:12px;color:#475569;font-size:0.95rem}
+ul{padding-left:20px;margin-bottom:12px}
+li{margin-bottom:6px;color:#475569;font-size:0.93rem}
+.cta{display:block;text-align:center;padding:16px;background:#3b82f6;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;font-size:1.05rem;margin:24px 0;transition:background 0.2s}
+.cta:hover{background:#2563eb}
+.highlight{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:16px;margin:16px 0;font-size:0.9rem}
+.highlight strong{color:#92400e}
+.example{background:#f1f5f9;border-left:4px solid #3b82f6;padding:16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:0.9rem}
+.footer{text-align:center;padding:30px 0;color:#94a3b8;font-size:0.8rem}
+.footer a{color:#64748b}
+@media(max-width:600px){h1{font-size:1.3rem}.container{padding:12px}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>亚马逊后台关键词检测工具</h1>
+<p class="subtitle">免费检查Search Terms字节数、与标题重复率、分隔符格式</p>
+
+<a class="cta" href="./?utm_source=backend-page&utm_medium=seo">免费检测你的后台关键词 →</a>
+
+<div class="card">
+<h2>后台搜索词：被低估的流量入口</h2>
+<p>亚马逊给每个产品250字节的后台搜索词空间。这是除了标题之外，最重要的关键词输入位置。但很多卖家犯了以下错误：</p>
+<ul>
+<li><strong>不填</strong> — 白白浪费250字节的关键词容量</li>
+<li><strong>重复标题词</strong> — 标题已经被索引了，重复是浪费</li>
+<li><strong>用逗号分隔</strong> — 亚马逊不识别逗号，每个逗号浪费1字节</li>
+<li><strong>超过250字节</strong> — 超出部分直接被忽略，等于没填</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>250字节怎么算？</h2>
+<div class="highlight">
+<strong>注意：是字节(bytes)不是字符(characters)！</strong> 英文字母=1字节，空格=1字节，中文字符=3字节。所以250字节 ≈ 250个英文字母 或 83个中文字。
+</div>
+<p>我们的检测工具会精确计算你的后台搜索词字节数，实时显示是否超过250字节限制。</p>
+</div>
+
+<div class="card">
+<h2>后台关键词优化策略</h2>
+<h3>应该填什么？</h3>
+<ul>
+<li><strong>同义词</strong> — earphone / earbud / headset（标题里用了一个，后台补其他的）</li>
+<li><strong>长尾词</strong> — best earbuds for running, wireless headphones for gym</li>
+<li><strong>拼写变体</strong> — bluetooth / bluetooh / blue tooth（常见拼错也有搜索量）</li>
+<li><strong>多语言</strong> — auriculares（西班牙语）, écouteurs（法语），覆盖非英语搜索</li>
+<li><strong>场景词</strong> — gym workout commute travel office（使用场景）</li>
+</ul>
+
+<h3>不应该填什么？</h3>
+<ul>
+<li>标题中已有的词（已被索引，重复无效）</li>
+<li>品牌名（已在品牌字段中）</li>
+<li>ASIN或竞品品牌名（违反政策）</li>
+<li>"best""cheap""new"等主观词（亚马逊不索引）</li>
+</ul>
+
+<h3>格式示例</h3>
+<div class="example">
+<p><strong>错误格式：</strong> earphone, earbud, headset, wireless, bluetooth, noise cancelling</p>
+<p><strong>正确格式：</strong> earphone earbud headset tws gym workout commute auriculares écouteurs waterproof sweatproof</p>
+</div>
+</div>
+
+<a class="cta" href="./?utm_source=backend-page&utm_medium=seo">用Listing诊断器检测你的后台关键词 →</a>
+
+<div class="footer">
+<p><a href="./">← 返回Listing诊断器首页</a> · <a href="./amazon-listing-check.html">亚马逊Listing检测</a> · <a href="./listing-title-optimizer.html">标题优化工具</a></p>
+<p style="margin-top:8px">免费在线工具 · 数据不上传 · 100%浏览器本地分析</p>
+</div>
+</div>
+</body>
+</html>
