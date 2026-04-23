@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Listing诊断器 — 免费分析你的跨境电商产品标题和描述</title>
-<meta name="description" content="免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量。检测标题长度、关键词密度、卖点结构，获取优化建议。">
-<meta name="keywords" content="listing优化,亚马逊listing分析,跨境电商工具,产品标题优化,listing诊断,SEO分析,Amazon listing">
+<meta name="description" content="免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量。检测标题长度、关键词密度、卖点结构、后台关键词、手机端截断，获取优化建议。">
+<meta name="keywords" content="listing优化,亚马逊listing分析,跨境电商工具,产品标题优化,listing诊断,SEO分析,Amazon listing,跨境电商,listing自查">
 <link rel="canonical" href="https://yifanyifan897645.github.io/listing-analyzer/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Listing诊断器 — 免费分析跨境电商产品标题">
-<meta property="og:description" content="一键分析亚马逊/速卖通/Shopify产品Listing质量。检测标题长度、关键词密度、卖点结构，获取优化建议。完全免费，无需注册。">
+<meta property="og:description" content="一键分析亚马逊/速卖通/Shopify产品Listing质量。15项深度检测+手机端截断预览+优化建议。完全免费，无需注册。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://yifanyifan897645.github.io/listing-analyzer/">
 <meta property="og:locale" content="zh_CN">
@@ -19,72 +19,113 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Listing诊断器 — 免费分析跨境电商产品标题">
-<meta name="twitter:description" content="一键分析亚马逊/速卖通/Shopify产品Listing质量。检测标题、关键词、卖点结构。完全免费。">
+<meta name="twitter:description" content="一键分析亚马逊/速卖通/Shopify产品Listing质量。15项深度检测+手机端截断预览。完全免费。">
 
-<!-- JSON-LD Structured Data -->
+<!-- JSON-LD -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Listing诊断器","description":"免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量","url":"https://yifanyifan897645.github.io/listing-analyzer/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"inLanguage":["zh-CN","en"]}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Listing诊断器","description":"免费在线工具，一键分析亚马逊、速卖通、Shopify产品Listing质量。15项深度检测。","url":"https://yifanyifan897645.github.io/listing-analyzer/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"inLanguage":["zh-CN","en"]}
 </script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
-.container{max-width:800px;margin:0 auto;padding:20px}
+.container{max-width:840px;margin:0 auto;padding:20px}
 h1{font-size:1.8rem;text-align:center;margin:30px 0 8px;color:#0f172a}
-.subtitle{text-align:center;color:#64748b;margin-bottom:30px;font-size:0.95rem}
+.subtitle{text-align:center;color:#64748b;margin-bottom:10px;font-size:0.95rem}
+.trust-bar{text-align:center;margin-bottom:28px;font-size:0.82rem;color:#94a3b8}
+.trust-bar span{margin:0 8px}
 .card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
-.card h2{font-size:1.1rem;margin-bottom:16px;color:#334155}
+.card h2{font-size:1.1rem;margin-bottom:16px;color:#334155;display:flex;align-items:center;gap:8px}
+.card h2 .count{background:#3b82f6;color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:10px}
 label{display:block;font-weight:600;margin-bottom:6px;font-size:0.9rem;color:#475569}
-textarea,select,input[type="text"]{width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;font-family:inherit;transition:border-color 0.2s}
+label .hint{font-weight:400;color:#94a3b8}
+textarea,select,input[type="text"],input[type="number"]{width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;font-family:inherit;transition:border-color 0.2s}
 textarea:focus,select:focus,input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
 textarea{resize:vertical;min-height:80px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
 .field{margin-bottom:16px}
+.check-row{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px}
+.check-item{display:flex;align-items:center;gap:6px;font-size:0.9rem;color:#475569;cursor:pointer}
+.check-item input{width:18px;height:18px;accent-color:#3b82f6}
 .btn{display:block;width:100%;padding:14px;background:#3b82f6;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s}
 .btn:hover{background:#2563eb}
 .btn:disabled{background:#94a3b8;cursor:not-allowed}
+.btn-secondary{background:#64748b;font-size:0.9rem;margin-top:8px}
+.btn-secondary:hover{background:#475569}
 
 /* Results */
 .results{display:none}
-.score-ring{width:120px;height:120px;margin:0 auto 16px;position:relative}
+.score-hero{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
+.score-ring{width:140px;height:140px;position:relative;flex-shrink:0}
 .score-ring svg{transform:rotate(-90deg)}
-.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;font-weight:700}
-.score-label{text-align:center;font-size:0.9rem;color:#64748b;margin-bottom:24px}
+.score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.score-ring .score-num{font-size:2.4rem;font-weight:800;display:block}
+.score-ring .score-max{font-size:0.8rem;color:#94a3b8}
+.score-summary{text-align:left}
+.score-summary .grade{font-size:1.5rem;font-weight:700;margin-bottom:4px}
+.score-summary .desc{color:#64748b;font-size:0.95rem;margin-bottom:8px}
+.score-summary .stats{display:flex;gap:16px;font-size:0.85rem}
+.score-summary .stat{display:flex;align-items:center;gap:4px}
+.dot-good{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.dot-warn{width:8px;height:8px;border-radius:50%;background:#eab308}
+.dot-bad{width:8px;height:8px;border-radius:50%;background:#ef4444}
 
-.metric{padding:14px 0;border-bottom:1px solid #f1f5f9}
-.metric:last-child{border-bottom:none}
-.metric-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.metric-name{font-weight:600;font-size:0.95rem}
-.metric-score{font-weight:700;font-size:0.95rem;padding:2px 10px;border-radius:20px}
+/* Mobile Preview */
+.mobile-preview{background:#1a1a1a;border-radius:16px;padding:16px;margin:20px 0;color:#fff;position:relative}
+.mobile-preview::before{content:'iPhone 手机端预览';position:absolute;top:-10px;left:16px;background:#1a1a1a;padding:0 8px;font-size:0.7rem;color:#64748b;border-radius:4px}
+.mobile-title{font-size:0.95rem;line-height:1.5;word-break:break-all}
+.mobile-title .visible{color:#e2e8f0}
+.mobile-title .truncated{color:#ef4444;opacity:0.4;text-decoration:line-through}
+.mobile-title .ellipsis{color:#ef4444;font-weight:700}
+.mobile-meta{font-size:0.75rem;color:#6b7280;margin-top:8px;border-top:1px solid #333;padding-top:8px}
+
+/* Dimension Cards */
+.dim-card{background:#fff;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:12px;overflow:hidden}
+.dim-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;transition:background 0.2s}
+.dim-header:hover{background:#f8fafc}
+.dim-name{font-weight:600;font-size:0.95rem;display:flex;align-items:center;gap:8px}
+.dim-score{font-weight:700;font-size:0.9rem;padding:3px 12px;border-radius:20px;white-space:nowrap}
 .score-good{background:#dcfce7;color:#166534}
 .score-warn{background:#fef9c3;color:#854d0e}
 .score-bad{background:#fee2e2;color:#991b1b}
-.metric-detail{font-size:0.85rem;color:#64748b}
-.metric-tip{font-size:0.85rem;color:#ea580c;margin-top:4px;padding-left:16px;border-left:2px solid #fb923c}
+.dim-body{padding:0 16px 14px;display:none}
+.dim-body.open{display:block}
+.dim-item{padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:0.88rem}
+.dim-item:last-child{border-bottom:none}
+.dim-item-head{display:flex;justify-content:space-between;align-items:center;color:#334155}
+.dim-item-name{display:flex;align-items:center;gap:6px}
+.dim-check{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;color:#fff}
+.check-pass{background:#22c55e}
+.check-warn{background:#eab308}
+.check-fail{background:#ef4444}
+.dim-tip{font-size:0.82rem;color:#ea580c;margin-top:4px;padding-left:24px}
 
-.preview-box{background:#fff;border:2px solid #3b82f6;border-radius:12px;padding:24px;margin-top:24px;position:relative;overflow:hidden}
-.preview-box h3{color:#1e40af;margin-bottom:16px;font-size:1.1rem;display:flex;align-items:center;gap:8px}
-.preview-badge{background:#3b82f6;color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px}
-.preview-title{background:#f0fdf4;border-left:3px solid #22c55e;padding:12px 16px;border-radius:0 8px 8px 0;font-size:0.95rem;line-height:1.6;margin-bottom:16px;color:#166534}
-.preview-locked{position:relative}
-.preview-locked-content{filter:blur(5px);user-select:none;pointer-events:none;font-size:0.9rem;color:#64748b;line-height:1.8}
-.preview-locked-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.3),rgba(255,255,255,0.9));border-radius:8px}
-.preview-locked-overlay span{font-weight:600;color:#1e40af;margin-bottom:8px}
-
-.cta-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+/* CTA */
+.cta-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:12px;padding:24px;text-align:center;margin-top:20px}
 .cta-box h3{color:#1e40af;margin-bottom:8px;font-size:1.1rem}
-.cta-box p{color:#3b82f6;margin-bottom:16px;font-size:0.9rem}
-.cta-btn{display:inline-block;padding:12px 32px;background:#2563eb;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;transition:background 0.2s}
-.cta-btn:hover{background:#1d4ed8}
+.cta-box p{color:#475569;margin-bottom:16px;font-size:0.9rem}
+.cta-btn{display:inline-block;padding:12px 28px;background:#2563eb;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;transition:all 0.2s;font-size:0.95rem}
+.cta-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+.cta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+.cta-card{background:#fff;border-radius:10px;padding:16px;text-align:left;border:1px solid #e2e8f0;transition:border-color 0.2s}
+.cta-card:hover{border-color:#3b82f6}
+.cta-card h4{font-size:0.95rem;margin-bottom:4px}
+.cta-card .price{font-size:1.2rem;font-weight:800;color:#2563eb;margin-bottom:6px}
+.cta-card .price.green{color:#16a34a}
+.cta-card p{font-size:0.8rem;color:#64748b;margin-bottom:10px}
 
 .footer{text-align:center;padding:30px 0;color:#94a3b8;font-size:0.8rem}
 .footer a{color:#64748b}
-.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;margin-left:8px}
 
 @media(max-width:600px){
-  .row{grid-template-columns:1fr}
+  .row,.row3{grid-template-columns:1fr}
   h1{font-size:1.4rem}
   .container{padding:12px}
+  .score-hero{flex-direction:column;text-align:center}
+  .score-summary{text-align:center}
+  .score-summary .stats{justify-content:center}
+  .cta-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -92,9 +133,10 @@ textarea{resize:vertical;min-height:80px}
 
 <div class="container">
   <h1>Listing 诊断器</h1>
-  <p class="subtitle">免费分析跨境电商产品Listing质量 &middot; 支持亚马逊/速卖通/Shopify</p>
+  <p class="subtitle">免费分析跨境电商Listing质量 · 15项深度检测 · 手机端截断预览</p>
+  <p class="trust-bar"><span>支持 Amazon / 速卖通 / Shopify</span><span>·</span><span>数据不上传，100%本地分析</span></p>
 
-  <!-- Input Form -->
+  <!-- Input -->
   <div class="card" id="inputCard">
     <h2>粘贴你的产品信息</h2>
 
@@ -105,11 +147,12 @@ textarea{resize:vertical;min-height:80px}
           <option value="amazon">Amazon 亚马逊</option>
           <option value="aliexpress">AliExpress 速卖通</option>
           <option value="shopify">Shopify 独立站</option>
+          <option value="1688">1688</option>
           <option value="other">其他平台</option>
         </select>
       </div>
       <div class="field">
-        <label for="category">产品类目</label>
+        <label for="category">产品类目 <span class="hint">(选填)</span></label>
         <input type="text" id="category" placeholder="如：手机壳、LED灯带、瑜伽垫">
       </div>
     </div>
@@ -117,69 +160,101 @@ textarea{resize:vertical;min-height:80px}
     <div class="field">
       <label for="title">产品标题</label>
       <textarea id="title" rows="2" placeholder="粘贴你的产品标题...&#10;例：Bluetooth Wireless Earbuds, Noise Cancelling Headphones with Microphone, IPX7 Waterproof"></textarea>
+      <div style="text-align:right;font-size:0.78rem;color:#94a3b8;margin-top:4px"><span id="titleCount">0</span> 字符</div>
     </div>
 
     <div class="field">
-      <label for="bullets">卖点/Bullet Points <span style="color:#94a3b8;font-weight:400">（每行一个）</span></label>
+      <label for="bullets">卖点/Bullet Points <span class="hint">(每行一个)</span></label>
       <textarea id="bullets" rows="6" placeholder="粘贴你的卖点描述，每个卖点一行...&#10;例：&#10;【Superior Sound Quality】Premium 13mm drivers deliver crystal-clear audio&#10;【40H Battery Life】Full charge lasts up to 40 hours with the charging case&#10;【IPX7 Waterproof】Perfect for gym, running, and outdoor activities"></textarea>
     </div>
 
     <div class="field">
-      <label for="keywords">目标关键词 <span style="color:#94a3b8;font-weight:400">（逗号分隔，选填）</span></label>
+      <label for="backendKw">后台搜索词/Search Terms <span class="hint">(选填)</span></label>
+      <textarea id="backendKw" rows="2" placeholder="粘贴后台搜索词，空格分隔...&#10;例：earphone tws bluetooth5.0 gym running workout"></textarea>
+      <div style="text-align:right;font-size:0.78rem;color:#94a3b8;margin-top:4px"><span id="backendBytes">0</span> / 250 字节</div>
+    </div>
+
+    <div class="field">
+      <label for="keywords">目标关键词 <span class="hint">(逗号分隔，选填)</span></label>
       <input type="text" id="keywords" placeholder="如：bluetooth earbuds, wireless headphones, noise cancelling">
     </div>
 
-    <button class="btn" id="analyzeBtn" onclick="analyze()">开始分析</button>
-    <button class="btn" style="margin-top:8px;background:#64748b;font-size:0.9rem" onclick="loadDemo()">不知道怎么用？点这里看示例</button>
+    <div class="field">
+      <label>Listing完整度 <span class="hint">(勾选你已有的)</span></label>
+      <div class="check-row">
+        <label class="check-item"><input type="checkbox" id="hasImages" value="1"> 产品图 7张+</label>
+        <label class="check-item"><input type="checkbox" id="hasMainImg" value="1"> 白底主图</label>
+        <label class="check-item"><input type="checkbox" id="hasVideo" value="1"> 产品视频</label>
+        <label class="check-item"><input type="checkbox" id="hasAplus" value="1"> A+/图文详情</label>
+        <label class="check-item"><input type="checkbox" id="hasQA" value="1"> Q&A/买家问答</label>
+        <label class="check-item"><input type="checkbox" id="hasReview" value="1"> 有评论/Review</label>
+      </div>
+    </div>
+
+    <button class="btn" id="analyzeBtn" onclick="analyze()">开始诊断（15项检测）</button>
+    <button class="btn btn-secondary" onclick="loadDemo()">看示例 — 用一个问题Listing演示</button>
   </div>
 
   <!-- Results -->
   <div class="results" id="results">
-    <div class="card">
-      <div class="score-ring">
-        <svg width="120" height="120">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="#e2e8f0" stroke-width="8"/>
-          <circle id="scoreArc" cx="60" cy="60" r="52" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="327" stroke-dashoffset="327" stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
-        </svg>
-        <div class="score-text" id="totalScore">0</div>
-      </div>
-      <div class="score-label" id="scoreDesc">分析中...</div>
-    </div>
-
-    <div class="card">
-      <h2>详细诊断</h2>
-      <div id="metricsContainer"></div>
-    </div>
-
-    <div class="preview-box" id="previewBox" style="display:none">
-      <h3><span class="preview-badge">AI预览</span> 专业优化后的效果</h3>
-      <p style="font-size:0.85rem;color:#64748b;margin-bottom:12px">基于诊断结果，我们会这样优化你的Listing：</p>
-      <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:4px">优化后标题：</div>
-      <div class="preview-title" id="previewTitle"></div>
-      <div class="preview-locked">
-        <div class="preview-locked-content" id="previewBlurred">
-          <div>BENEFIT IN CAPS: Detailed feature description with specific measurements and proof points that address buyer concerns</div>
-          <div>PREMIUM QUALITY: Built with high-grade materials for long-lasting durability and reliable daily performance</div>
-          <div>PERFECT FOR: Ideal usage scenarios with specific recommendations for different customer segments</div>
-          <div style="margin-top:8px;color:#94a3b8">+ 后端关键词优化 · 3语言标题翻译 · 图片文案建议</div>
+    <div class="card" id="scoreCard">
+      <div class="score-hero">
+        <div class="score-ring">
+          <svg width="140" height="140">
+            <circle cx="70" cy="70" r="60" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+            <circle id="scoreArc" cx="70" cy="70" r="60" fill="none" stroke="#3b82f6" stroke-width="10" stroke-dasharray="377" stroke-dashoffset="377" stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div class="score-text">
+            <span class="score-num" id="totalScore">0</span>
+            <span class="score-max">/100</span>
+          </div>
         </div>
-        <div class="preview-locked-overlay">
-          <span>完整优化方案需付费解锁</span>
-          <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=preview-overlay&utm_content=1yuan" target="_blank" rel="noopener" style="background:#22c55e;padding:8px 24px;font-size:0.9rem">¥1 试试看 →</a>
+        <div class="score-summary">
+          <div class="grade" id="gradeLabel">分析中...</div>
+          <div class="desc" id="scoreDesc"></div>
+          <div class="stats">
+            <div class="stat"><div class="dot-good"></div><span id="passCount">0</span> 通过</div>
+            <div class="stat"><div class="dot-warn"></div><span id="warnCount">0</span> 警告</div>
+            <div class="stat"><div class="dot-bad"></div><span id="failCount">0</span> 问题</div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Mobile Preview -->
+    <div class="mobile-preview" id="mobilePreview">
+      <div class="mobile-title" id="mobileTitle"></div>
+      <div class="mobile-meta" id="mobileMeta"></div>
+    </div>
+
+    <!-- Dimension Results -->
+    <div id="dimContainer"></div>
+
+    <!-- CTA -->
     <div class="cta-box" id="ctaBox">
-      <h3 id="ctaTitle">需要专业优化？</h3>
-      <p>让专业团队帮你重写 — 标题+五点描述+关键词+多语言翻译</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=1yuan" target="_blank" rel="noopener" style="background:#22c55e">¥1 先体验 →</a>
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWcl5hwZA==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=39yuan" target="_blank" rel="noopener" style="background:#f59e0b">¥39 1688转化 →</a>
-        <a class="cta-btn" href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=cta-box&utm_content=49yuan" target="_blank" rel="noopener">¥49 完整优化 →</a>
+      <h3 id="ctaTitle">想要完整的50项诊断？</h3>
+      <p>本工具检测15项核心指标。完整版包含50项检查清单 + 3个行业模板 + 修改指南</p>
+      <div class="cta-grid">
+        <div class="cta-card">
+          <h4>50项自查清单+模板</h4>
+          <div class="price green">¥29</div>
+          <p>PDF清单 + 3个行业模板(蓝牙音箱/手机壳/瑜伽垫) + DOCX可编辑</p>
+          <a class="cta-btn" style="background:#16a34a;width:100%;text-align:center;display:block" href="https://mbd.pub/o/bread/YZWcmJ1xaQ==?utm_source=listing-analyzer&utm_medium=cta&utm_content=29yuan-kit" target="_blank" rel="noopener">获取诊断包 ¥29 →</a>
+        </div>
+        <div class="cta-card">
+          <h4>专业团队帮你优化</h4>
+          <div class="price">¥49</div>
+          <p>标题重写 + 五点描述 + 后台关键词 + 多语言翻译，48h交付Word文档</p>
+          <a class="cta-btn" style="width:100%;text-align:center;display:block" href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=cta&utm_content=49yuan" target="_blank" rel="noopener">下单优化 ¥49 →</a>
+        </div>
+        <div class="cta-card">
+          <h4>¥1 先体验</h4>
+          <div class="price" style="color:#f59e0b">¥1</div>
+          <p>1个产品的标题+五点描述优化，看看效果再决定</p>
+          <a class="cta-btn" style="background:#f59e0b;width:100%;text-align:center;display:block" href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=cta&utm_content=1yuan" target="_blank" rel="noopener">¥1 试试看 →</a>
+        </div>
       </div>
-      <p style="font-size:0.8rem;color:#64748b">¥1体验包：1个产品标题+五点描述 &middot; ¥39 1688转化：中文产品→英文Listing &middot; ¥49完整包：标题+描述+关键词+翻译</p>
-      <p style="margin-top:6px;font-size:0.8rem;color:#64748b">48小时内交付 &middot; Word文档</p>
+      <p style="font-size:0.8rem;color:#94a3b8">7天无理由退款 · 面包多安全支付</p>
     </div>
 
     <div style="display:flex;gap:12px;margin-top:16px">
@@ -188,253 +263,322 @@ textarea{resize:vertical;min-height:80px}
     </div>
   </div>
 
+  <!-- Bottom SEO Content -->
+  <div class="card" id="seoContent" style="margin-top:20px">
+    <h2>为什么需要诊断你的Listing？</h2>
+    <div style="font-size:0.9rem;color:#64748b;line-height:1.8">
+      <p style="margin-bottom:12px">亚马逊A9算法、速卖通搜索排名、Shopify的Google SEO，都依赖产品Listing的质量。一个优化良好的Listing能带来：</p>
+      <ul style="padding-left:20px;margin-bottom:12px">
+        <li><strong>搜索排名提升</strong> — 标题中的关键词布局直接影响搜索曝光</li>
+        <li><strong>点击率翻倍</strong> — 结构化标题比堆砌关键词的标题CTR高40-60%</li>
+        <li><strong>转化率提升</strong> — 痛点前置的Bullet Points比纯参数描述转化率高2-3倍</li>
+        <li><strong>避免违规降权</strong> — 关键词堆砌、特殊字符、超长标题都会触发平台处罚</li>
+      </ul>
+      <p>本工具基于Amazon Seller Central官方指南和跨境电商实战经验，检测15项核心指标，帮你快速发现Listing中的问题。</p>
+    </div>
+  </div>
+
   <div class="footer">
-    <p>Listing诊断器 &middot; 免费工具 &middot; 数据不上传，全部本地分析</p>
-    <p style="margin-top:4px"><a href="https://mbd.pub/o/bread/YZWcl5hwZA==?utm_source=listing-analyzer&utm_medium=footer&utm_content=39yuan" target="_blank">1688→Listing转化 ¥39</a> · <a href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=footer&utm_content=49yuan" target="_blank">跨境Listing优化 ¥49</a> · <a href="https://mbd.pub/o/bread/YZWclp5xag==?utm_source=listing-analyzer&utm_medium=footer&utm_content=29yuan" target="_blank">电商文案优化 ¥29</a></p>
+    <p>Listing诊断器 · 免费在线工具 · 数据不上传，100%浏览器本地分析</p>
+    <p style="margin-top:4px">
+      <a href="https://mbd.pub/o/bread/YZWcmJ1xaQ==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">50项诊断包 ¥29</a> ·
+      <a href="https://mbd.pub/o/bread/YZWclp5xZw==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">Listing优化 ¥49</a> ·
+      <a href="https://mbd.pub/o/bread/YZWcl5hsag==?utm_source=listing-analyzer&utm_medium=footer" target="_blank">¥1体验</a>
+    </p>
   </div>
 </div>
 
 <script>
+// Live char counter
+document.getElementById('title').addEventListener('input', function() {
+  document.getElementById('titleCount').textContent = this.value.length;
+});
+
+// Live backend keyword byte counter
+document.getElementById('backendKw').addEventListener('input', function() {
+  const bytes = new Blob([this.value]).size;
+  const el = document.getElementById('backendBytes');
+  el.textContent = bytes;
+  el.style.color = bytes > 250 ? '#ef4444' : '#94a3b8';
+});
+
 function analyze() {
   const title = document.getElementById('title').value.trim();
   const bullets = document.getElementById('bullets').value.trim();
+  const backendKw = document.getElementById('backendKw').value.trim();
   const keywords = document.getElementById('keywords').value.trim();
   const platform = document.getElementById('platform').value;
-  const category = document.getElementById('category').value.trim();
 
   if (!title) { alert('请输入产品标题'); return; }
   trackEvent('analyze_start', platform);
 
-  const metrics = [];
-  let totalScore = 0;
-  let maxScore = 0;
+  const dimensions = [];
 
-  // 1. Title Length Analysis
+  // === DIMENSION 1: Title (5 checks) ===
+  const titleChecks = [];
   const titleLen = title.length;
-  const platformLimits = { amazon: { min: 80, ideal: 150, max: 200 }, aliexpress: { min: 60, ideal: 128, max: 128 }, shopify: { min: 50, ideal: 70, max: 100 }, other: { min: 60, ideal: 120, max: 200 } };
-  const limits = platformLimits[platform];
-  let titleScore = 0;
-  let titleTip = '';
-  if (titleLen < limits.min) {
-    titleScore = Math.round((titleLen / limits.min) * 60);
-    titleTip = `标题太短（${titleLen}字符），建议至少${limits.min}字符。补充核心卖点和使用场景关键词。`;
-  } else if (titleLen <= limits.ideal) {
-    titleScore = 90 + Math.round(((titleLen - limits.min) / (limits.ideal - limits.min)) * 10);
-    titleTip = '';
-  } else if (titleLen <= limits.max) {
-    titleScore = 80;
-    titleTip = `标题略长（${titleLen}字符），建议控制在${limits.ideal}字符内，删除冗余修饰词。`;
-  } else {
-    titleScore = 50;
-    titleTip = `标题超长（${titleLen}字符），超过平台限制${limits.max}字符，可能被截断！`;
-  }
-  metrics.push({ name: '标题长度', score: titleScore, detail: `${titleLen} 字符（${platform === 'amazon' ? 'Amazon' : platform === 'aliexpress' ? '速卖通' : platform === 'shopify' ? 'Shopify' : '通用'}建议 ${limits.min}-${limits.ideal}）`, tip: titleTip });
-  totalScore += titleScore; maxScore += 100;
+  const pLimits = {
+    amazon: { min: 80, ideal: 150, max: 200, mobile: 80 },
+    aliexpress: { min: 60, ideal: 128, max: 128, mobile: 60 },
+    shopify: { min: 50, ideal: 70, max: 100, mobile: 55 },
+    '1688': { min: 20, ideal: 30, max: 60, mobile: 20 },
+    other: { min: 60, ideal: 120, max: 200, mobile: 70 }
+  };
+  const lim = pLimits[platform];
 
-  // 2. Title Keyword Stuffing Check
-  const titleWords = title.split(/[\s,\-|/]+/).filter(w => w.length > 1);
-  const uniqueWords = new Set(titleWords.map(w => w.toLowerCase()));
-  const dupeRatio = 1 - (uniqueWords.size / titleWords.length);
-  let stuffScore = dupeRatio < 0.1 ? 95 : dupeRatio < 0.2 ? 75 : dupeRatio < 0.3 ? 55 : 30;
-  const stuffTip = dupeRatio >= 0.2 ? `发现${Math.round(dupeRatio * 100)}%重复词，避免关键词堆砌，会降低平台权重。` : '';
-  metrics.push({ name: '关键词堆砌', score: stuffScore, detail: `${titleWords.length}个词中${uniqueWords.size}个不重复（重复率${Math.round(dupeRatio * 100)}%）`, tip: stuffTip });
-  totalScore += stuffScore; maxScore += 100;
+  // 1.1 Title Length
+  let tLenStatus = 'pass', tLenTip = '';
+  if (titleLen < lim.min) { tLenStatus = 'fail'; tLenTip = `太短(${titleLen}字符)，建议${lim.min}-${lim.ideal}字符，补充核心卖点和场景词。`; }
+  else if (titleLen > lim.max) { tLenStatus = 'fail'; tLenTip = `超长(${titleLen}字符)，超过上限${lim.max}，可能被截断或降权！`; }
+  else if (titleLen > lim.ideal) { tLenStatus = 'warn'; tLenTip = `略长(${titleLen}字符)，建议控制在${lim.ideal}以内。`; }
+  titleChecks.push({ name: `标题长度 (${titleLen}/${lim.ideal})`, status: tLenStatus, tip: tLenTip });
 
-  // 3. Title Structure
-  const hasDelimiter = /[|,\-–—]/.test(title);
-  const hasBrand = /^[A-Z][a-zA-Z0-9]+\s/.test(title);
-  let structScore = 70;
+  // 1.2 Keyword Stuffing
+  const tWords = title.split(/[\s,\-|/()]+/).filter(w => w.length > 1);
+  const uWords = new Set(tWords.map(w => w.toLowerCase()));
+  const dupeRate = tWords.length > 0 ? 1 - (uWords.size / tWords.length) : 0;
+  let stuffStatus = 'pass', stuffTip = '';
+  if (dupeRate >= 0.3) { stuffStatus = 'fail'; stuffTip = `${Math.round(dupeRate*100)}%重复词，严重堆砌！平台会降权。删除重复词，用同义词替代。`; }
+  else if (dupeRate >= 0.15) { stuffStatus = 'warn'; stuffTip = `${Math.round(dupeRate*100)}%重复词，有轻微堆砌风险。`; }
+  titleChecks.push({ name: `关键词堆砌 (重复率${Math.round(dupeRate*100)}%)`, status: stuffStatus, tip: stuffTip });
+
+  // 1.3 Title Structure
+  const hasDelim = /[|,\-–—·]/.test(title);
+  const brandFirst = /^[A-Z][a-zA-Z0-9]+[\s,\-|]/.test(title);
+  let structStatus = hasDelim && brandFirst ? 'pass' : hasDelim || brandFirst ? 'warn' : 'fail';
   let structTip = '';
-  if (hasDelimiter && hasBrand) { structScore = 95; }
-  else if (hasDelimiter) { structScore = 85; structTip = '建议把品牌名放在标题开头。'; }
-  else { structScore = 60; structTip = '标题缺少分隔符（如逗号、竖线），建议用结构化格式：品牌+核心品+核心卖点+使用场景。'; }
-  metrics.push({ name: '标题结构', score: structScore, detail: `品牌前置: ${hasBrand ? '是' : '否'} · 分隔符: ${hasDelimiter ? '有' : '无'}`, tip: structTip });
-  totalScore += structScore; maxScore += 100;
+  if (!brandFirst) structTip += '建议品牌名放在标题开头。';
+  if (!hasDelim) structTip += '添加分隔符(逗号/竖线)让标题结构化：品牌+核心品+卖点+场景。';
+  titleChecks.push({ name: `标题结构 (品牌${brandFirst?'✓':'✗'} 分隔${hasDelim?'✓':'✗'})`, status: structStatus, tip: structTip });
 
-  // 4. Bullet Points Analysis
-  if (bullets) {
-    const bulletList = bullets.split('\n').map(b => b.trim()).filter(b => b.length > 0);
-    const bulletCount = bulletList.length;
-    let bulletScore = 0;
-    let bulletTip = '';
+  // 1.4 Special Characters
+  const specialChars = title.match(/[!@#$%^&*(){}\[\]<>~`+=\\]/g);
+  let specStatus = 'pass', specTip = '';
+  if (specialChars && specialChars.length > 2) { specStatus = 'fail'; specTip = `包含${specialChars.length}个特殊字符(${specialChars.slice(0,5).join('')})，可能违反平台标题规则。`; }
+  else if (specialChars && specialChars.length > 0) { specStatus = 'warn'; specTip = '少量特殊字符，确认平台是否允许。'; }
+  titleChecks.push({ name: `特殊字符 (${specialChars ? specialChars.length : 0}个)`, status: specStatus, tip: specTip });
 
-    if (bulletCount === 0) {
-      bulletScore = 0; bulletTip = '没有卖点描述！产品listing必须有bullet points。';
-    } else if (bulletCount < 3) {
-      bulletScore = 40; bulletTip = `只有${bulletCount}条卖点，建议至少5条。覆盖功能、材质、场景、售后、规格。`;
-    } else if (bulletCount >= 5) {
-      bulletScore = 90;
-    } else {
-      bulletScore = 70; bulletTip = `${bulletCount}条卖点还行，但建议补充到5条以上。`;
-    }
+  // 1.5 ALL CAPS
+  const capsWords = title.split(/\s+/).filter(w => w.length > 3 && w === w.toUpperCase() && /[A-Z]/.test(w));
+  let capsStatus = 'pass', capsTip = '';
+  if (capsWords.length > 3) { capsStatus = 'warn'; capsTip = `${capsWords.length}个全大写词，过多会显得不专业。只大写品牌名和关键缩写。`; }
+  titleChecks.push({ name: `大小写规范 (${capsWords.length}个全大写词)`, status: capsStatus, tip: capsTip });
 
-    // Check bullet quality
-    const avgLen = bulletList.reduce((s, b) => s + b.length, 0) / bulletCount;
-    if (avgLen < 50) {
-      bulletScore = Math.max(bulletScore - 20, 20);
-      bulletTip += ' 卖点太短，建议每条100-200字符，包含具体数据和使用场景。';
-    }
+  dimensions.push({ name: '标题优化', icon: '📝', checks: titleChecks });
 
-    // Check if bullets have structure (emoji/bracket headers)
-    const hasHeaders = bulletList.filter(b => /^[【\[🔊💪🎵🎧🏃✅⭐🔋]/.test(b)).length;
-    if (hasHeaders >= bulletCount * 0.5) {
-      bulletScore = Math.min(bulletScore + 5, 100);
-    } else if (bulletCount >= 3) {
-      bulletTip += ' 建议每条卖点加粗体标题（如【xx】或大写前缀），提高可读性。';
-    }
+  // === DIMENSION 2: Bullet Points (4 checks) ===
+  const bulletChecks = [];
+  const bulletList = bullets ? bullets.split('\n').map(b => b.trim()).filter(b => b.length > 0) : [];
+  const bCount = bulletList.length;
 
-    metrics.push({ name: '卖点描述', score: bulletScore, detail: `${bulletCount}条卖点 · 平均${Math.round(avgLen)}字符/条`, tip: bulletTip.trim() });
-    totalScore += bulletScore; maxScore += 100;
+  // 2.1 Bullet Count
+  let bcStatus = bCount >= 5 ? 'pass' : bCount >= 3 ? 'warn' : 'fail';
+  let bcTip = bCount < 5 ? `只有${bCount}条，建议至少5条。覆盖：核心功能/材质品质/使用场景/售后保障/规格参数。` : '';
+  bulletChecks.push({ name: `卖点数量 (${bCount}条)`, status: bcStatus, tip: bcTip });
+
+  if (bCount > 0) {
+    // 2.2 Average Length
+    const avgLen = bulletList.reduce((s, b) => s + b.length, 0) / bCount;
+    let alStatus = avgLen >= 100 ? 'pass' : avgLen >= 50 ? 'warn' : 'fail';
+    let alTip = avgLen < 100 ? `平均${Math.round(avgLen)}字符/条，偏短。建议100-200字符，包含具体数据和使用场景。` : '';
+    bulletChecks.push({ name: `描述长度 (平均${Math.round(avgLen)}字符)`, status: alStatus, tip: alTip });
+
+    // 2.3 Header Format
+    const hasHeaders = bulletList.filter(b => /^[【\[🔊💪🎵🎧🏃✅⭐🔋☀️💡🎯🛡️📦]|^[A-Z][A-Z\s]{2,}[:：\]]/.test(b)).length;
+    let hfStatus = hasHeaders >= bCount * 0.8 ? 'pass' : hasHeaders > 0 ? 'warn' : 'fail';
+    let hfTip = hasHeaders < bCount * 0.5 ? '建议每条卖点加粗体标题前缀（如【xx】或 ALL CAPS:），提高扫读效率。' : '';
+    bulletChecks.push({ name: `标题格式 (${hasHeaders}/${bCount}条有前缀)`, status: hfStatus, tip: hfTip });
+
+    // 2.4 Data/Numbers
+    const hasData = bulletList.filter(b => /\d+/.test(b)).length;
+    let dataStatus = hasData >= bCount * 0.6 ? 'pass' : hasData > 0 ? 'warn' : 'fail';
+    let dataTip = hasData < bCount * 0.5 ? '建议在卖点中加入具体数据（如"40小时续航"、"IPX7防水"），量化卖点更有说服力。' : '';
+    bulletChecks.push({ name: `数据量化 (${hasData}/${bCount}条含数字)`, status: dataStatus, tip: dataTip });
+  } else {
+    bulletChecks.push({ name: '描述长度', status: 'fail', tip: '没有卖点描述！' });
+    bulletChecks.push({ name: '标题格式', status: 'fail', tip: '没有卖点描述！' });
+    bulletChecks.push({ name: '数据量化', status: 'fail', tip: '没有卖点描述！' });
   }
 
-  // 5. Keyword Coverage
+  dimensions.push({ name: '卖点描述', icon: '📋', checks: bulletChecks });
+
+  // === DIMENSION 3: Backend Keywords (3 checks) ===
+  const bkChecks = [];
+  if (backendKw) {
+    const bkBytes = new Blob([backendKw]).size;
+    let byteStatus = bkBytes <= 250 ? 'pass' : 'fail';
+    bkChecks.push({ name: `字节数 (${bkBytes}/250)`, status: byteStatus, tip: bkBytes > 250 ? `超出${bkBytes-250}字节！Amazon后台搜索词限制250字节，超出部分会被忽略。` : '' });
+
+    // Overlap with title
+    const bkWords = backendKw.toLowerCase().split(/[\s,;]+/).filter(w => w.length > 1);
+    const titleLow = title.toLowerCase();
+    const overlap = bkWords.filter(w => titleLow.includes(w));
+    const overlapRate = bkWords.length > 0 ? overlap.length / bkWords.length : 0;
+    let olStatus = overlapRate <= 0.2 ? 'pass' : overlapRate <= 0.4 ? 'warn' : 'fail';
+    bkChecks.push({ name: `与标题重复 (${overlap.length}/${bkWords.length}词)`, status: olStatus, tip: overlapRate > 0.2 ? `${Math.round(overlapRate*100)}%的后台词和标题重复，浪费搜索机会！后台词应补充标题中没有的同义词、长尾词。重复词：${overlap.slice(0,5).join(', ')}` : '' });
+
+    // Comma check
+    const hasComma = /[,，]/.test(backendKw);
+    bkChecks.push({ name: `分隔符格式`, status: hasComma ? 'warn' : 'pass', tip: hasComma ? 'Amazon后台搜索词用空格分隔，不需要逗号。逗号会浪费字节且不被识别为分隔符。' : '' });
+  } else {
+    bkChecks.push({ name: '后台搜索词', status: 'warn', tip: '未填写后台搜索词。建议填写并检查——这是很多卖家忽略的流量入口。' });
+  }
+  dimensions.push({ name: '后台关键词', icon: '🔍', checks: bkChecks });
+
+  // === DIMENSION 4: Keyword Coverage (2 checks) ===
+  const kwChecks = [];
   if (keywords) {
     const kwList = keywords.split(/[,，;；]/).map(k => k.trim().toLowerCase()).filter(k => k);
-    const titleLower = title.toLowerCase();
-    const allText = (title + ' ' + bullets).toLowerCase();
-    let titleHits = kwList.filter(k => titleLower.includes(k)).length;
-    let allHits = kwList.filter(k => allText.includes(k)).length;
-    let kwScore = Math.round((allHits / kwList.length) * 100);
-    let kwTip = '';
-    if (titleHits < kwList.length) {
-      const missing = kwList.filter(k => !titleLower.includes(k));
-      kwTip = `标题中缺少关键词：${missing.slice(0, 3).join('、')}${missing.length > 3 ? '等' : ''}。核心关键词必须出现在标题中。`;
-    }
-    if (allHits < kwList.length) {
-      const bodyMissing = kwList.filter(k => !allText.includes(k));
-      kwTip += ` 全文缺少：${bodyMissing.join('、')}。`;
-    }
-    metrics.push({ name: '关键词覆盖', score: kwScore, detail: `${kwList.length}个目标词中 标题命中${titleHits}个 · 全文命中${allHits}个`, tip: kwTip.trim() });
-    totalScore += kwScore; maxScore += 100;
+    const titleLow = title.toLowerCase();
+    const allText = (title + ' ' + bullets + ' ' + backendKw).toLowerCase();
+    const titleHits = kwList.filter(k => titleLow.includes(k));
+    const allHits = kwList.filter(k => allText.includes(k));
+
+    let thStatus = titleHits.length >= kwList.length ? 'pass' : titleHits.length >= kwList.length * 0.5 ? 'warn' : 'fail';
+    const missingInTitle = kwList.filter(k => !titleLow.includes(k));
+    kwChecks.push({ name: `标题命中 (${titleHits.length}/${kwList.length})`, status: thStatus, tip: missingInTitle.length > 0 ? `标题缺少：${missingInTitle.slice(0,3).join('、')}。核心关键词必须出现在标题中。` : '' });
+
+    let ahStatus = allHits.length >= kwList.length ? 'pass' : allHits.length >= kwList.length * 0.7 ? 'warn' : 'fail';
+    const missingAll = kwList.filter(k => !allText.includes(k));
+    kwChecks.push({ name: `全文覆盖 (${allHits.length}/${kwList.length})`, status: ahStatus, tip: missingAll.length > 0 ? `全文缺少：${missingAll.join('、')}。确保在标题/卖点/后台词中至少出现一次。` : '' });
+  } else {
+    kwChecks.push({ name: '关键词覆盖', status: 'warn', tip: '未填写目标关键词，无法检测覆盖率。建议填写3-5个核心搜索词。' });
   }
+  dimensions.push({ name: '关键词覆盖', icon: '🎯', checks: kwChecks });
 
-  // 6. Language & Readability
-  const isChinese = /[\u4e00-\u9fff]/.test(title);
-  const isEnglish = /^[a-zA-Z0-9\s,.\-|/'&()]+$/.test(title.replace(/[\u4e00-\u9fff]/g, ''));
-  const hasMixedLang = isChinese && /[a-zA-Z]{3,}/.test(title);
-  let langScore = 85;
-  let langTip = '';
-  if (hasMixedLang && platform !== 'other') {
-    langScore = 60;
-    langTip = '标题中英混用可能降低搜索权重。建议标题使用纯目标市场语言，在后台关键词中补充另一语言。';
-  }
-  // Check for ALL CAPS
-  const capsWords = title.split(/\s+/).filter(w => w.length > 3 && w === w.toUpperCase());
-  if (capsWords.length > 2) {
-    langScore -= 15;
-    langTip += ' 过多全大写单词会显得不专业，建议只大写品牌名和首字母。';
-  }
-  metrics.push({ name: '语言规范', score: langScore, detail: `${isChinese ? '中文' : '英文'}标题 · ${capsWords.length}个全大写词`, tip: langTip.trim() });
-  totalScore += langScore; maxScore += 100;
+  // === DIMENSION 5: Completeness (1 check with sub-items) ===
+  const compChecks = [];
+  const has = {
+    images: document.getElementById('hasImages').checked,
+    mainImg: document.getElementById('hasMainImg').checked,
+    video: document.getElementById('hasVideo').checked,
+    aplus: document.getElementById('hasAplus').checked,
+    qa: document.getElementById('hasQA').checked,
+    review: document.getElementById('hasReview').checked
+  };
+  const compItems = [
+    { key: 'images', label: '7张+产品图', weight: 2 },
+    { key: 'mainImg', label: '白底主图', weight: 2 },
+    { key: 'video', label: '产品视频', weight: 1 },
+    { key: 'aplus', label: 'A+/图文详情', weight: 2 },
+    { key: 'qa', label: 'Q&A/买家问答', weight: 1 },
+    { key: 'review', label: 'Review/评论', weight: 2 }
+  ];
+  const compScore = compItems.reduce((s, item) => s + (has[item.key] ? item.weight : 0), 0);
+  const compMax = compItems.reduce((s, item) => s + item.weight, 0);
+  const compPct = Math.round(compScore / compMax * 100);
 
-  // Calculate final score
-  const finalScore = Math.round(totalScore / maxScore * 100);
+  const missing = compItems.filter(item => !has[item.key]).map(item => item.label);
+  let compStatus = compPct >= 80 ? 'pass' : compPct >= 50 ? 'warn' : 'fail';
+  compChecks.push({ name: `完整度 (${compPct}%)`, status: compStatus, tip: missing.length > 0 ? `缺少：${missing.join('、')}。完整的Listing转化率更高。` : '' });
 
-  // Count problems
-  const problemCount = metrics.filter(m => m.score < 80).length;
+  dimensions.push({ name: 'Listing完整度', icon: '📊', checks: compChecks });
 
-  // Render results
-  renderResults(finalScore, metrics, problemCount);
+  // === Calculate Scores ===
+  let allChecks = dimensions.flatMap(d => d.checks);
+  let passC = allChecks.filter(c => c.status === 'pass').length;
+  let warnC = allChecks.filter(c => c.status === 'warn').length;
+  let failC = allChecks.filter(c => c.status === 'fail').length;
+  let total = allChecks.length;
+  let finalScore = Math.round((passC * 100 + warnC * 60 + failC * 20) / total);
+
+  // Render
+  renderResults(finalScore, dimensions, passC, warnC, failC, title, lim);
+  trackEvent('analyze_complete', 'score_' + finalScore + '_p' + passC + '_w' + warnC + '_f' + failC);
 }
 
-function renderResults(score, metrics, problemCount) {
+function renderResults(score, dimensions, passC, warnC, failC, title, lim) {
   document.getElementById('inputCard').style.display = 'none';
+  document.getElementById('seoContent').style.display = 'none';
   document.getElementById('results').style.display = 'block';
 
-  // Animate score ring
+  // Score ring
   const arc = document.getElementById('scoreArc');
-  const circumference = 2 * Math.PI * 52;
-  const offset = circumference - (score / 100) * circumference;
-
-  let color = score >= 80 ? '#22c55e' : score >= 60 ? '#eab308' : '#ef4444';
+  const circ = 2 * Math.PI * 60;
+  const offset = circ - (score / 100) * circ;
+  const color = score >= 80 ? '#22c55e' : score >= 60 ? '#eab308' : '#ef4444';
   arc.style.stroke = color;
   setTimeout(() => { arc.style.strokeDashoffset = offset; }, 100);
 
   const scoreEl = document.getElementById('totalScore');
   scoreEl.style.color = color;
-  // Animate counter
-  let current = 0;
-  const step = Math.ceil(score / 30);
+  let cur = 0;
+  const step = Math.ceil(score / 25);
   const timer = setInterval(() => {
-    current = Math.min(current + step, score);
-    scoreEl.textContent = current;
-    if (current >= score) clearInterval(timer);
+    cur = Math.min(cur + step, score);
+    scoreEl.textContent = cur;
+    if (cur >= score) clearInterval(timer);
   }, 30);
 
-  const desc = score >= 85 ? '优秀！你的Listing质量很好' : score >= 70 ? '良好，有一些可优化的地方' : score >= 50 ? '需要优化，有明显短板' : '亟需优化，多项指标不达标';
-  document.getElementById('scoreDesc').textContent = desc;
+  const grades = [{min:90,g:'A',l:'优秀'},{min:80,g:'B',l:'良好'},{min:60,g:'C',l:'需优化'},{min:40,g:'D',l:'较差'},{min:0,g:'F',l:'亟需优化'}];
+  const grade = grades.find(g => score >= g.min);
+  document.getElementById('gradeLabel').textContent = grade.g + ' — ' + grade.l;
+  document.getElementById('gradeLabel').style.color = color;
+  document.getElementById('scoreDesc').textContent = `${passC + warnC + failC}项检测完成`;
+  document.getElementById('passCount').textContent = passC;
+  document.getElementById('warnCount').textContent = warnC;
+  document.getElementById('failCount').textContent = failC;
 
-  // Render metrics
-  const container = document.getElementById('metricsContainer');
-  container.innerHTML = metrics.map(m => {
-    const cls = m.score >= 80 ? 'score-good' : m.score >= 60 ? 'score-warn' : 'score-bad';
-    return `<div class="metric">
-      <div class="metric-header">
-        <span class="metric-name">${m.name}</span>
-        <span class="metric-score ${cls}">${m.score}分</span>
+  // Mobile preview
+  const mobileLimit = lim.mobile;
+  const mTitle = document.getElementById('mobileTitle');
+  const mMeta = document.getElementById('mobileMeta');
+  if (title.length > mobileLimit) {
+    mTitle.innerHTML = `<span class="visible">${escHtml(title.substring(0, mobileLimit))}</span><span class="ellipsis">...</span><span class="truncated">${escHtml(title.substring(mobileLimit))}</span>`;
+    mMeta.innerHTML = `手机端只显示前 <strong style="color:#ef4444">${mobileLimit}</strong> 个字符，后 <strong style="color:#ef4444">${title.length - mobileLimit}</strong> 个字符被截断。确保核心卖点在前${mobileLimit}字符内！`;
+  } else {
+    mTitle.innerHTML = `<span class="visible">${escHtml(title)}</span>`;
+    mMeta.innerHTML = `标题${title.length}字符，手机端可完整显示（限制${mobileLimit}字符）。`;
+    mMeta.style.color = '#22c55e';
+  }
+
+  // Dimensions
+  const container = document.getElementById('dimContainer');
+  container.innerHTML = dimensions.map((dim, i) => {
+    const checks = dim.checks;
+    const dimPass = checks.filter(c => c.status === 'pass').length;
+    const dimTotal = checks.length;
+    const dimPct = Math.round(dimPass / dimTotal * 100);
+    const cls = dimPct >= 80 ? 'score-good' : dimPct >= 50 ? 'score-warn' : 'score-bad';
+    const hasProblems = checks.some(c => c.status !== 'pass');
+
+    return `<div class="dim-card">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <span class="dim-name">${dim.icon} ${dim.name}</span>
+        <span class="dim-score ${cls}">${dimPass}/${dimTotal} 通过</span>
       </div>
-      <div class="metric-detail">${m.detail}</div>
-      ${m.tip ? `<div class="metric-tip">${m.tip}</div>` : ''}
+      <div class="dim-body${hasProblems || i === 0 ? ' open' : ''}">
+        ${checks.map(c => {
+          const icon = c.status === 'pass' ? '✓' : c.status === 'warn' ? '!' : '✗';
+          const cls2 = c.status === 'pass' ? 'check-pass' : c.status === 'warn' ? 'check-warn' : 'check-fail';
+          return `<div class="dim-item">
+            <div class="dim-item-head">
+              <span class="dim-item-name"><span class="dim-check ${cls2}">${icon}</span> ${c.name}</span>
+            </div>
+            ${c.tip ? `<div class="dim-tip">${c.tip}</div>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
     </div>`;
   }).join('');
 
-  // Update CTA with problem count
-  if (problemCount > 0) {
-    document.getElementById('ctaTitle').innerHTML = '检测到 <span style="color:#ef4444;font-size:1.3em">' + problemCount + '</span> 个可优化项';
-  } else {
-    document.getElementById('ctaTitle').textContent = '你的Listing质量不错！想更上一层楼？';
+  // Update CTA
+  if (failC > 0) {
+    document.getElementById('ctaTitle').innerHTML = `发现 <span style="color:#ef4444">${failC}</span> 个问题需要修复`;
   }
 
-  // Generate preview optimized title
-  generatePreview(document.getElementById('title').value.trim(), document.getElementById('platform').value);
-
-  trackEvent('analyze_complete', 'score_' + score + '_problems_' + problemCount);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function generatePreview(originalTitle, platform) {
-  const box = document.getElementById('previewBox');
-  const previewEl = document.getElementById('previewTitle');
-
-  // Simple rule-based title optimization
-  let words = originalTitle.split(/[\s]+/).filter(w => w.length > 0);
-
-  // Remove excessive punctuation/separators
-  words = words.map(w => w.replace(/^[,\-|–—]+|[,\-|–—]+$/g, ''));
-
-  // Capitalize first letter of each significant word
-  const smallWords = new Set(['for','and','the','with','in','on','to','of','a','an','by','or','is','at']);
-  words = words.map((w, i) => {
-    const lower = w.toLowerCase();
-    if (i === 0 || !smallWords.has(lower)) {
-      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-    }
-    return lower;
-  });
-
-  // Ensure structured format with dashes
-  let optimized = words.join(' ');
-
-  // If no structure separators exist, add them intelligently
-  if (!/[\-–—|]/.test(optimized) && words.length > 5) {
-    const mid = Math.floor(words.length * 0.4);
-    const parts = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
-    optimized = parts.join(' - ');
-  }
-
-  // Add platform hint
-  const suffix = platform === 'amazon' ? ' | Amazon Ready' : '';
-
-  // Truncate if too long
-  if ((optimized + suffix).length > 200) {
-    optimized = optimized.substring(0, 195 - suffix.length) + '...';
-  }
-
-  previewEl.textContent = optimized + suffix;
-  box.style.display = 'block';
+function toggleDim(el) {
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
 }
 
-// Simple event tracking — stores in localStorage for debugging
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
 function trackEvent(action, label) {
   try {
     const events = JSON.parse(localStorage.getItem('la_events') || '[]');
@@ -444,7 +588,6 @@ function trackEvent(action, label) {
   } catch(e) {}
 }
 
-// Track CTA clicks
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href*="mbd.pub"]');
   if (link) trackEvent('cta_click', link.href.split('utm_content=')[1] || 'unknown');
@@ -453,27 +596,38 @@ document.addEventListener('click', function(e) {
 function loadDemo() {
   document.getElementById('platform').value = 'amazon';
   document.getElementById('category').value = '蓝牙音箱';
-  document.getElementById('title').value = 'Bluetooth Speaker Wireless Speaker Portable Speaker Mini Speaker Outdoor Speaker Waterproof Speaker Music Speaker';
-  document.getElementById('bullets').value = 'Bluetooth 5.0 connection\nBattery capacity 3000mAh\nIPX7 waterproof rating\n40mm speaker driver\nWeight 350g size 15x7x7cm';
+  document.getElementById('title').value = 'Bluetooth Speaker Wireless Speaker Portable Speaker Mini Speaker Outdoor Speaker Waterproof Speaker Music Speaker Bass Speaker';
+  document.getElementById('titleCount').textContent = 'Bluetooth Speaker Wireless Speaker Portable Speaker Mini Speaker Outdoor Speaker Waterproof Speaker Music Speaker Bass Speaker'.length;
+  document.getElementById('bullets').value = 'Bluetooth 5.0 connection\nBattery capacity 3000mAh\nIPX7 waterproof rating\nWeight 350g size 15x7x7cm';
+  document.getElementById('backendKw').value = 'bluetooth speaker, wireless speaker, portable speaker, mini speaker, outdoor speaker, waterproof speaker, bass speaker, music speaker';
   document.getElementById('keywords').value = 'bluetooth speaker, waterproof speaker, portable speaker, outdoor speaker';
+  document.getElementById('hasImages').checked = true;
+  document.getElementById('hasMainImg').checked = true;
   analyze();
 }
 
 function copyReport() {
   const score = document.getElementById('totalScore').textContent;
-  const desc = document.getElementById('scoreDesc').textContent;
-  const metrics = document.querySelectorAll('.metric');
-  let report = `Listing诊断报告\n${'='.repeat(30)}\n综合评分: ${score}/100 (${desc})\n\n`;
-  metrics.forEach(m => {
-    const name = m.querySelector('.metric-name').textContent;
-    const s = m.querySelector('.metric-score').textContent;
-    const detail = m.querySelector('.metric-detail').textContent;
-    const tip = m.querySelector('.metric-tip');
-    report += `${name}: ${s}\n  ${detail}\n`;
-    if (tip) report += `  建议: ${tip.textContent}\n`;
+  const grade = document.getElementById('gradeLabel').textContent;
+  let report = `Listing诊断报告\n${'='.repeat(30)}\n综合评分: ${score}/100 (${grade})\n\n`;
+
+  document.querySelectorAll('.dim-card').forEach(dim => {
+    const name = dim.querySelector('.dim-name').textContent;
+    const dScore = dim.querySelector('.dim-score').textContent;
+    report += `── ${name} [${dScore}] ──\n`;
+    dim.querySelectorAll('.dim-item').forEach(item => {
+      const iName = item.querySelector('.dim-item-name').textContent.trim();
+      const tip = item.querySelector('.dim-tip');
+      report += `  ${iName}\n`;
+      if (tip) report += `  → ${tip.textContent}\n`;
+    });
     report += '\n';
   });
-  report += `---\n免费诊断: https://yifanyifan897645.github.io/listing-analyzer/\n专业优化: https://mbd.pub/o/bread/YZWcl5hsag== (¥1起)\n`;
+
+  const mMeta = document.getElementById('mobileMeta').textContent;
+  report += `手机端预览: ${mMeta}\n\n`;
+  report += `---\n免费诊断: https://yifanyifan897645.github.io/listing-analyzer/\n50项完整诊断包(¥29): https://mbd.pub/o/bread/YZWcmJ1xaQ==\n`;
+
   navigator.clipboard.writeText(report).then(() => {
     const btn = event.target;
     btn.textContent = '已复制!';
@@ -485,10 +639,10 @@ function copyReport() {
 
 function reset() {
   document.getElementById('inputCard').style.display = 'block';
+  document.getElementById('seoContent').style.display = 'block';
   document.getElementById('results').style.display = 'none';
-  document.getElementById('previewBox').style.display = 'none';
-  // Reset score ring
-  document.getElementById('scoreArc').style.strokeDashoffset = '327';
+  const arc = document.getElementById('scoreArc');
+  arc.style.strokeDashoffset = '377';
   document.getElementById('totalScore').textContent = '0';
 }
 </script>
