@@ -141,7 +141,7 @@ textarea{resize:vertical;min-height:80px}
 
 <div class="container">
   <h1>Listing 诊断器</h1>
-  <p class="subtitle">免费分析跨境电商Listing质量 · 15项深度检测 · 手机端截断预览</p>
+  <p class="subtitle">免费分析跨境电商Listing质量 · 15项深度检测 + EU合规提醒 · 手机端截断预览</p>
   <p class="trust-bar"><span>支持 Amazon / 速卖通 / Shopify</span><span>·</span><span>数据不上传，100%本地分析</span></p>
 
   <!-- Input -->
@@ -510,12 +510,43 @@ function analyze() {
 
   dimensions.push({ name: 'Listing完整度', icon: '📊', checks: compChecks });
 
-  // === Calculate Scores ===
+  // === DIMENSION 6: EU Compliance Alerts (non-scoring) ===
+  if (platform === 'amazon' || platform === 'aliexpress' || platform === 'shopify') {
+    const euChecks = [];
+    const allTextLow = (title + ' ' + bullets).toLowerCase();
+    const elecKw = /battery|batteries|rechargeable|lithium|usb.?c|charger|led|电池|充电|锂电|adapter|power.?supply|plug|wireless.?charg/i;
+    const textileKw = /cotton|polyester|nylon|fabric|clothing|shirt|dress|jacket|textile|棉|涤纶|服装|纺织|shoes|sneaker|leather/i;
+    const ceKw = /\bce\b|ce.?mark|ce.?certif|conformit|认证|ce标志/i;
+
+    const needsWEEE = elecKw.test(allTextLow);
+    const needsTextile = textileKw.test(allTextLow);
+    const hasCE = ceKw.test(allTextLow);
+
+    euChecks.push({ name: '包装EPR', status: 'warn', tip: '向EU销售就需要包装EPR注册（德国LUCID、法国UIN等），无最低门槛。2026年8月PPWR强制生效。→ 查看自查清单' });
+
+    if (needsWEEE) {
+      euChecks.push({ name: '电子电器WEEE', status: 'warn', tip: '检测到电子/电池相关关键词。电子产品需要WEEE注册（德国Stiftung EAR、法国Ecosystem等）。2025年底前未上传WEEE号的产品将被亚马逊下架。' });
+    }
+    if (needsWEEE) {
+      euChecks.push({ name: '电池EPR', status: 'warn', tip: '含电池产品（包括纽扣电池）需要电池EPR注册。2026年1月起亚马逊强制要求上传电池EPR号。' });
+    }
+    if (needsTextile) {
+      euChecks.push({ name: '纺织EPR(法国)', status: 'warn', tip: '检测到纺织相关关键词。法国已强制纺织EPR（Refashion注册），其他EU国家预计2027年跟进。' });
+    }
+    if (!hasCE && needsWEEE) {
+      euChecks.push({ name: 'CE标志声明', status: 'warn', tip: '电子产品出口EU通常需要CE认证。建议在Listing中提及CE标志/认证信息，增加买家信任。' });
+    }
+
+    dimensions.push({ name: 'EU合规提醒', icon: '⚖️', checks: euChecks, nonScoring: true });
+  }
+
+  // === Calculate Scores (exclude non-scoring dimensions) ===
+  let scoringChecks = dimensions.filter(d => !d.nonScoring).flatMap(d => d.checks);
   let allChecks = dimensions.flatMap(d => d.checks);
-  let passC = allChecks.filter(c => c.status === 'pass').length;
-  let warnC = allChecks.filter(c => c.status === 'warn').length;
-  let failC = allChecks.filter(c => c.status === 'fail').length;
-  let total = allChecks.length;
+  let passC = scoringChecks.filter(c => c.status === 'pass').length;
+  let warnC = scoringChecks.filter(c => c.status === 'warn').length;
+  let failC = scoringChecks.filter(c => c.status === 'fail').length;
+  let total = scoringChecks.length;
   let finalScore = Math.round((passC * 100 + warnC * 60 + failC * 20) / total);
 
   // Render
@@ -572,16 +603,18 @@ function renderResults(score, dimensions, passC, warnC, failC, title, lim) {
   const container = document.getElementById('dimContainer');
   container.innerHTML = dimensions.map((dim, i) => {
     const checks = dim.checks;
+    const isNonScoring = dim.nonScoring;
     const dimPass = checks.filter(c => c.status === 'pass').length;
     const dimTotal = checks.length;
-    const dimPct = Math.round(dimPass / dimTotal * 100);
-    const cls = dimPct >= 80 ? 'score-good' : dimPct >= 50 ? 'score-warn' : 'score-bad';
+    const dimPct = dimTotal > 0 ? Math.round(dimPass / dimTotal * 100) : 0;
+    const cls = isNonScoring ? 'score-warn' : (dimPct >= 80 ? 'score-good' : dimPct >= 50 ? 'score-warn' : 'score-bad');
     const hasProblems = checks.some(c => c.status !== 'pass');
+    const scoreLabel = isNonScoring ? `${checks.length}项提醒` : `${dimPass}/${dimTotal} 通过`;
 
-    return `<div class="dim-card">
+    return `<div class="dim-card"${isNonScoring ? ' style="border-color:#fcd34d"' : ''}>
       <div class="dim-header" onclick="toggleDim(this)">
-        <span class="dim-name">${dim.icon} ${dim.name}</span>
-        <span class="dim-score ${cls}">${dimPass}/${dimTotal} 通过</span>
+        <span class="dim-name">${dim.icon} ${dim.name}${isNonScoring ? ' <span style="font-size:0.7rem;color:#d97706;font-weight:400">(不计入评分)</span>' : ''}</span>
+        <span class="dim-score ${cls}">${scoreLabel}</span>
       </div>
       <div class="dim-body${hasProblems || i === 0 ? ' open' : ''}">
         ${checks.map(c => {
@@ -594,6 +627,7 @@ function renderResults(score, dimensions, passC, warnC, failC, title, lim) {
             ${c.tip ? `<div class="dim-tip">${c.tip}</div>` : ''}
           </div>`;
         }).join('')}
+        ${isNonScoring ? '<div style="margin-top:8px;text-align:center"><a href="./epr-compliance-checklist.html" target="_blank" style="display:inline-block;padding:8px 20px;background:#dc2626;color:#fff;border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:600">查看完整EU EPR自查清单 →</a></div>' : ''}
       </div>
     </div>`;
   }).join('');
